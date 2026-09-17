@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f6f8;
+            color: #222;
+        }
+
+        header {
+            background: #111827;
+            color: white;
+            padding: 18px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 24px;
+        }
+
+        .back-btn {
+            color: white;
+            text-decoration: none;
+            background: #2563eb;
+            padding: 10px 18px;
+            border-radius: 7px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 25px;
+        }
+
+        .box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 7px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #2563eb;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        .product {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+
+        .product:last-child {
+            border-bottom: none;
+        }
+
+        .product-name {
+            font-weight: bold;
+        }
+
+        .product-price {
+            font-weight: bold;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .place-order {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #16a34a;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .place-order:hover {
+            background: #15803d;
+        }
+
+        .message {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                margin-top: 20px;
+            }
+
+            header {
+                padding: 15px 20px;
+            }
+
+            header h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Checkout</h1>
+    <a href="index.html" class="back-btn">← Continue Shopping</a>
+</header>
+
+<div class="container">
+
+    <!-- CUSTOMER INFORMATION -->
+    <div class="box">
+
+        <h2>Customer Information</h2>
+
+        <form id="checkoutForm">
+
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="03XX-XXXXXXX"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="address">Delivery Address</label>
+                <textarea
+                    id="address"
+                    name="address"
+                    placeholder="Enter your complete delivery address"
+                    required
+                ></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="city">City</label>
+                <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    placeholder="Enter your city"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="payment">Payment Method</label>
+
+                <select id="payment" name="payment" required>
+                    <option value="">Select payment method</option>
+                    <option value="cod">Cash on Delivery</option>
+                    <option value="bank">Bank Transfer</option>
+                </select>
+            </div>
+
+            <button type="submit" class="place-order">
+                Place Order
+            </button>
+
+            <div id="message" class="message"></div>
+
+        </form>
+
+    </div>
+
+    <!-- ORDER SUMMARY -->
+    <div class="box">
+
+        <h2>Order Summary</h2>
+
+        <div id="cartItems">
+            <p>Loading cart...</p>
+        </div>
+
+        <div class="total-row">
+            <span>Total</span>
+            <span id="total">Rs. 0</span>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    const cartItems = document.getElementById("cartItems");
+    const totalElement = document.getElementById("total");
+    const form = document.getElementById("checkoutForm");
+    const message = document.getElementById("message");
+
+    function loadCart() {
+
+        let cart = [];
+
+        try {
+            cart = JSON.parse(localStorage.getItem("cart")) || [];
+        } catch (error) {
+            cart = [];
+        }
+
+        cartItems.innerHTML = "";
+
+        if (!Array.isArray(cart) || cart.length === 0) {
+            cartItems.innerHTML = `
+                <p style="color:#777;">
+                    Your cart is empty.
+                </p>
+            `;
+
+            totalElement.textContent = "Rs. 0";
+            return;
+        }
+
+        let total = 0;
+
+        cart.forEach(item => {
+
+            const name =
+                item.name ||
+                item.title ||
+                item.productName ||
+                "Product";
+
+            const price =
+                Number(item.price) || 0;
+
+            const quantity =
+                Number(item.quantity) ||
+                Number(item.qty) ||
+                1;
+
+            const itemTotal = price * quantity;
+
+            total += itemTotal;
+
+            const product = document.createElement("div");
+
+            product.className = "product";
+
+            product.innerHTML = `
+                <div>
+                    <div class="product-name">
+                        ${escapeHTML(name)}
+                    </div>
+
+                    <small>
+                        Quantity: ${quantity}
+                    </small>
+                </div>
+
+                <div class="product-price">
+                    Rs. ${itemTotal.toLocaleString()}
+                </div>
+            `;
+
+            cartItems.appendChild(product);
+        });
+
+        totalElement.textContent =
+            "Rs. " + total.toLocaleString();
+    }
+
+
+    function escapeHTML(text) {
+
+        const div = document.createElement("div");
+
+        div.textContent = text;
+
+        return div.innerHTML;
+    }
+
+
+    form.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const name =
+            document.getElementById("name").value.trim();
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const phone =
+            document.getElementById("phone").value.trim();
+
+        const address =
+            document.getElementById("address").value.trim();
+
+        const city =
+            document.getElementById("city").value.trim();
+
+        const payment =
+            document.getElementById("payment").value;
+
+        if (!name || !email || !phone || !address || !city || !payment) {
+
+            message.style.color = "#dc2626";
+            message.textContent =
+                "Please complete all required fields.";
+
+            return;
+        }
+
+        const order = {
+            name,
+            email,
+            phone,
+            address,
+            city,
+            payment,
+            cart: JSON.parse(localStorage.getItem("cart")) || [],
+            createdAt: new Date().toISOString()
+        };
+
+        localStorage.setItem(
+            "latestOrder",
+            JSON.stringify(order)
+        );
+
+        message.style.color = "#16a34a";
+        message.textContent =
+            "Order placed successfully!";
+
+        localStorage.removeItem("cart");
+
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 1500);
+    });
+
+
+    loadCart();
+</script>
+
+</body>
+</html>
+```
+
+### Then do this
+
+Put the file in the **same folder where your other HTML pages are**.
+
+For example:
+
+text
+your-project/
+├── index.html
+├── cart.html
+├── checkout.html   ← put it here
+├── login.html
+├── style.css
+└── script.js
+
+
+Then restart your server if necessary and open:
+
+text
+http://localhost:5000/checkout.html
+
+If your project uses **another port**, use that port instead.
+
+This page also reads products from `localStorage` using the common key `cart`, so it can work with a basic cart immediately.

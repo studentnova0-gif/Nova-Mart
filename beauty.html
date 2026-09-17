@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>NOVA MART | Beauty & Personal Care</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f5f5f5;
+            color: #222;
+        }
+
+
+        /* ================= HEADER ================= */
+
+        header {
+            background: #131921;
+            color: white;
+            padding: 16px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            color: #ff9900;
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .header-title {
+            font-size: 18px;
+        }
+
+        .cart-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            background: #ff9900;
+            color: #111;
+            padding: 10px 16px;
+            border-radius: 6px;
+        }
+
+
+        /* ================= NAVIGATION ================= */
+
+        nav {
+            background: #232f3e;
+            padding: 13px 5%;
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #ff9900;
+        }
+
+
+        /* ================= HERO ================= */
+
+        .hero {
+            margin: 25px auto;
+            width: 90%;
+            max-width: 1250px;
+            min-height: 240px;
+            border-radius: 15px;
+            padding: 55px 35px;
+            text-align: center;
+            color: white;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.35),
+                    rgba(0, 0, 0, 0.35)
+                ),
+                url("https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1400&q=85")
+                center/cover;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+
+        /* ================= CONTAINER ================= */
+
+        .container {
+            max-width: 1250px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 22px;
+        }
+
+        .section-header h2 {
+            font-size: 28px;
+        }
+
+        .section-header span {
+            color: #777;
+            font-size: 14px;
+        }
+
+
+        /* ================= PRODUCTS ================= */
+
+        .products {
+            display: grid;
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(220px, 1fr)
+                );
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow:
+                0 3px 12px rgba(0, 0, 0, 0.08);
+
+            transition:
+                transform 0.25s,
+                box-shadow 0.25s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.14);
+        }
+
+
+        /* ================= PRODUCT IMAGE ================= */
+
+        .product-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+
+        /* ================= PRODUCT CONTENT ================= */
+
+        .product-info {
+            padding: 17px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e7f7ed;
+            color: #15803d;
+            padding: 5px 9px;
+            border-radius: 5px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 9px;
+        }
+
+        .product-name {
+            font-size: 17px;
+            line-height: 1.4;
+            min-height: 48px;
+        }
+
+        .rating {
+            color: #f59e0b;
+            margin: 9px 0;
+            font-size: 14px;
+        }
+
+        .rating span {
+            color: #777;
+            margin-left: 5px;
+        }
+
+        .price {
+            color: #e47911;
+            font-size: 21px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+        .old-price {
+            color: #999;
+            font-size: 13px;
+            text-decoration: line-through;
+            margin-left: 6px;
+            font-weight: normal;
+        }
+
+        .discount {
+            color: #198754;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+
+        /* ================= BUTTONS ================= */
+
+        .button-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        button {
+            flex: 1;
+            border: none;
+            padding: 11px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .cart-btn {
+            background: #ffd814;
+            color: #111;
+        }
+
+        .cart-btn:hover {
+            background: #f7ca00;
+        }
+
+        .buy-btn {
+            background: #ff9900;
+            color: #111;
+        }
+
+        .buy-btn:hover {
+            background: #e88b00;
+        }
+
+
+        /* ================= KIT SECTION ================= */
+
+        .kit-section {
+            margin-top: 55px;
+        }
+
+        .kit-banner {
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff7eb3,
+                    #ff758c
+                );
+
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 22px;
+        }
+
+        .kit-banner h2 {
+            margin-bottom: 8px;
+        }
+
+        .kit-banner p {
+            opacity: 0.95;
+        }
+
+
+        /* ================= INFO ================= */
+
+        .beauty-info {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 45px;
+            line-height: 1.7;
+        }
+
+        .beauty-info h2 {
+            margin-bottom: 12px;
+        }
+
+        .beauty-info p {
+            color: #555;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #131921;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        footer .footer-logo {
+            color: #ff9900;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #ccc;
+            margin: 6px 0;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 14px 4%;
+                flex-wrap: wrap;
+            }
+
+            .logo {
+                font-size: 23px;
+            }
+
+            .header-title {
+                font-size: 15px;
+            }
+
+            nav {
+                gap: 14px;
+                padding: 12px 4%;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .hero {
+                padding: 45px 20px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .products {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+                gap: 12px;
+            }
+
+            .product-image {
+                height: 165px;
+            }
+
+            .product-info {
+                padding: 11px;
+            }
+
+            .product-name {
+                font-size: 14px;
+                min-height: 42px;
+            }
+
+            .price {
+                font-size: 17px;
+            }
+
+            .old-price {
+                display: block;
+                margin-left: 0;
+                margin-top: 3px;
+            }
+
+            .button-row {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <a
+            href="index.html"
+            class="logo"
+        >
+            NOVA MART
+        </a>
+
+        <div class="header-title">
+            💄 Beauty & Personal Care
+        </div>
+
+        <a
+            href="cart.html"
+            class="cart-link"
+        >
+            🛒 Cart
+        </a>
+
+    </header>
+
+
+    <!-- ================= NAVIGATION ================= -->
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="deals.html">
+            Today's Deals
+        </a>
+
+        <a href="best-sellers.html">
+            Best Sellers
+        </a>
+
+        <a href="new-arrivals.html">
+            New Arrivals
+        </a>
+
+        <a href="electronics.html">
+            Electronics
+        </a>
+
+        <a href="fashion.html">
+            Fashion
+        </a>
+
+        <a href="home-kitchen.html">
+            Home & Kitchen
+        </a>
+
+        <a
+            href="beauty.html"
+            class="active"
+        >
+            Beauty
+        </a>
+
+        <a href="sports.html">
+            Sports
+        </a>
+
+        <a href="seller.html">
+            Sell on NOVA MART
+        </a>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <h1>
+            💄 Beauty & Personal Care
+        </h1>
+
+        <p>
+            Discover makeup, skincare, fragrances,
+            hair care and complete beauty kits.
+        </p>
+
+    </section>
+
+
+    <!-- ================= BEAUTY PRODUCTS ================= -->
+
+    <main class="container">
+
+        <div class="section-header">
+
+            <h2>
+                ✨ Beauty Products
+            </h2>
+
+            <span>
+                Quality products at great prices
+            </span>
+
+        </div>
+
+
+        <div class="products">
+
+
+            <!-- PRODUCT 1 -->
+
+            <div class="card">
+
+                <img
+                    class="product-image"
+                    src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=700&q=85"
+                    alt="Complete Makeup Kit"
+                >
+
+                <div class="product-info">
+
+                    <span class="badge">
+                        BEST SELLER
+                    </span>
+
+                    <h3 class="product-name">
+                        Complete Makeup Kit
+                    </h3>
+
+                    <div class="rating">
+                        ⭐⭐⭐⭐⭐
+                        <span>
+                            4.8 (245)
+                        </span>
+                    </div>
+
+                    <div class="price">
+                        Rs. 3,999
+
+                        <span class="old-price">
+                            Rs. 5,499
+                        </span>
+                    </div>
+
+                    <div class="discount">
+                        27% OFF
+                    </div>
+
+                    <div class="button-row">
+
+                        <button
+                            class="cart-btn"
+                            onclick="addToCart(
+                                'Complete Makeup Kit',
+                                3999,
+                                'https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            🛒 Add to Cart
+                        </button>
+
+                        <button
+                            class="buy-btn"
+                            onclick="buyNow(
+                                'Complete Makeup Kit',
+                                3999,
+                                'https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 2 -->
+
+            <div class="card">
+
+                <img
+                    class="product-image"
+                    src="https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=700&q=85"
+                    alt="Skincare Essentials Kit"
+                >
+
+                <div class="product-info">
+
+                    <span class="badge">
+                        POPULAR
+                    </span>
+
+                    <h3 class="product-name">
+                        Skincare Essentials Kit
+                    </h3>
+
+                    <div class="rating">
+                        ⭐⭐⭐⭐⭐
+                        <span>
+                            4.7 (189)
+                        </span>
+                    </div>
+
+                    <div class="price">
+                        Rs. 2,999
+
+                        <span class="old-price">
+                            Rs. 4,200
+                        </span>
+                    </div>
+
+                    <div class="discount">
+                        29% OFF
+                    </div>
+
+                    <div class="button-row">
+
+                        <button
+                            class="cart-btn"
+                            onclick="addToCart(
+                                'Skincare Essentials Kit',
+                                2999,
+                                'https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            🛒 Add to Cart
+                        </button>
+
+                        <button
+                            class="buy-btn"
+                            onclick="buyNow(
+                                'Skincare Essentials Kit',
+                                2999,
+                                'https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 3 -->
+
+            <div class="card">
+
+                <img
+                    class="product-image"
+                    src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&w=700&q=85"
+                    alt="Face Care Kit"
+                >
+
+                <div class="product-info">
+
+                    <span class="badge">
+                        NEW
+                    </span>
+
+                    <h3 class="product-name">
+                        Face Care & Glow Kit
+                    </h3>
+
+                    <div class="rating">
+                        ⭐⭐⭐⭐⭐
+                        <span>
+                            4.6 (132)
+                        </span>
+                    </div>
+
+                    <div class="price">
+                        Rs. 2,499
+
+                        <span class="old-price">
+                            Rs. 3,499
+                        </span>
+                    </div>
+
+                    <div class="discount">
+                        29% OFF
+                    </div>
+
+                    <div class="button-row">
+
+                        <button
+                            class="cart-btn"
+                            onclick="addToCart(
+                                'Face Care & Glow Kit',
+                                2499,
+                                'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            🛒 Add to Cart
+                        </button>
+
+                        <button
+                            class="buy-btn"
+                            onclick="buyNow(
+                                'Face Care & Glow Kit',
+                                2499,
+                                'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 4 -->
+
+            <div class="card">
+
+                <img
+                    class="product-image"
+                    src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=700&q=85"
+                    alt="Hair Care Kit"
+                >
+
+                <div class="product-info">
+
+                    <span class="badge">
+                        DEAL
+                    </span>
+
+                    <h3 class="product-name">
+                        Complete Hair Care Kit
+                    </h3>
+
+                    <div class="rating">
+                        ⭐⭐⭐⭐☆
+                        <span>
+                            4.5 (98)
+                        </span>
+                    </div>
+
+                    <div class="price">
+                        Rs. 2,199
+
+                        <span class="old-price">
+                            Rs. 3,199
+                        </span>
+                    </div>
+
+                    <div class="discount">
+                        31% OFF
+                    </div>
+
+                    <div class="button-row">
+
+                        <button
+                            class="cart-btn"
+                            onclick="addToCart(
+                                'Complete Hair Care Kit',
+                                2199,
+                                'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            🛒 Add to Cart
+                        </button>
+
+                        <button
+                            class="buy-btn"
+                            onclick="buyNow(
+                                'Complete Hair Care Kit',
+                                2199,
+                                'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 5 -->
+
+            <div class="card">
+
+                <img
+                    class="product-image"
+                    src="https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=700&q=85"
+                    alt="Perfume Collection"
+                >
+
+                <div class="product-info">
+
+                    <span class="badge">
+                        PREMIUM
+                    </span>
+
+                    <h3 class="product-name">
+                        Luxury Fragrance Collection
+                    </h3>
+
+                    <div class="rating">
+                        ⭐⭐⭐⭐⭐
+                        <span>
+                            4.9 (176)
+                        </span>
+                    </div>
+
+                    <div class="price">
+                        Rs. 4,499
+
+                        <span class="old-price">
+                            Rs. 6,000
+                        </span>
+                    </div>
+
+                    <div class="discount">
+                        25% OFF
+                    </div>
+
+                    <div class="button-row">
+
+                        <button
+                            class="cart-btn"
+                            onclick="addToCart(
+                                'Luxury Fragrance Collection',
+                                4499,
+                                'https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            🛒 Add to Cart
+                        </button>
+
+                        <button
+                            class="buy-btn"
+                            onclick="buyNow(
+                                'Luxury Fragrance Collection',
+                                4499,
+                                'https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 6 -->
+
+            <div class="card">
+
+                <img
+                    class="product-image"
+                    src="https://images.unsplash.com/photo-1583241800698-e8ab01830a07?auto=format&fit=crop&w=700&q=85"
+                    alt="Nail Care Kit"
+                >
+
+                <div class="product-info">
+
+                    <span class="badge">
+                        NEW
+                    </span>
+
+                    <h3 class="product-name">
+                        Professional Nail Care Kit
+                    </h3>
+
+                    <div class="rating">
+                        ⭐⭐⭐⭐☆
+                        <span>
+                            4.4 (76)
+                        </span>
+                    </div>
+
+                    <div class="price">
+                        Rs. 1,499
+
+                        <span class="old-price">
+                            Rs. 2,099
+                        </span>
+                    </div>
+
+                    <div class="discount">
+                        28% OFF
+                    </div>
+
+                    <div class="button-row">
+
+                        <button
+                            class="cart-btn"
+                            onclick="addToCart(
+                                'Professional Nail Care Kit',
+                                1499,
+                                'https://images.unsplash.com/photo-1583241800698-e8ab01830a07?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            🛒 Add to Cart
+                        </button>
+
+                        <button
+                            class="buy-btn"
+                            onclick="buyNow(
+                                'Professional Nail Care Kit',
+                                1499,
+                                'https://images.unsplash.com/photo-1583241800698-e8ab01830a07?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 7 -->
+
+            <div class="card">
+
+                <img
+                    class="product-image"
+                    src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=700&q=85"
+                    alt="Lip Makeup Set"
+                >
+
+                <div class="product-info">
+
+                    <span class="badge">
+                        TRENDING
+                    </span>
+
+                    <h3 class="product-name">
+                        Lip Makeup Collection
+                    </h3>
+
+                    <div class="rating">
+                        ⭐⭐⭐⭐⭐
+                        <span>
+                            4.7 (121)
+                        </span>
+                    </div>
+
+                    <div class="price">
+                        Rs. 1,799
+
+                        <span class="old-price">
+                            Rs. 2,599
+                        </span>
+                    </div>
+
+                    <div class="discount">
+                        31% OFF
+                    </div>
+
+                    <div class="button-row">
+
+                        <button
+                            class="cart-btn"
+                            onclick="addToCart(
+                                'Lip Makeup Collection',
+                                1799,
+                                'https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            🛒 Add to Cart
+                        </button>
+
+                        <button
+                            class="buy-btn"
+                            onclick="buyNow(
+                                'Lip Makeup Collection',
+                                1799,
+                                'https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 8 -->
+
+            <div class="card">
+
+                <img
+                    class="product-image"
+                    src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=700&q=85"
+                    alt="Beauty Gift Box"
+                >
+
+                <div class="product-info">
+
+                    <span class="badge">
+                        GIFT SET
+                    </span>
+
+                    <h3 class="product-name">
+                        Premium Beauty Gift Box
+                    </h3>
+
+                    <div class="rating">
+                        ⭐⭐⭐⭐⭐
+                        <span>
+                            4.8 (143)
+                        </span>
+                    </div>
+
+                    <div class="price">
+                        Rs. 3,499
+
+                        <span class="old-price">
+                            Rs. 4,999
+                        </span>
+                    </div>
+
+                    <div class="discount">
+                        30% OFF
+                    </div>
+
+                    <div class="button-row">
+
+                        <button
+                            class="cart-btn"
+                            onclick="addToCart(
+                                'Premium Beauty Gift Box',
+                                3499,
+                                'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            🛒 Add to Cart
+                        </button>
+
+                        <button
+                            class="buy-btn"
+                            onclick="buyNow(
+                                'Premium Beauty Gift Box',
+                                3499,
+                                'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= BEAUTY KIT BANNER ================= -->
+
+        <section class="kit-section">
+
+            <div class="kit-banner">
+
+                <h2>
+                    🎁 Complete Beauty Kits
+                </h2>
+
+                <p>
+                    Save more when you buy our carefully
+                    selected beauty and personal-care kits.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= INFORMATION ================= -->
+
+        <section class="beauty-info">
+
+            <h2>
+                💖 Shop Beauty at NOVA MART
+            </h2>
+
+            <p>
+                Explore our collection of makeup,
+                skincare, hair care, fragrances,
+                nail care and premium beauty kits.
+                Whether you are shopping for yourself
+                or looking for a gift, NOVA MART brings
+                together a wide range of beauty products
+                at competitive prices.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-logo">
+            NOVA MART
+        </div>
+
+        <p>
+            Your trusted online shopping destination.
+        </p>
+
+        <p>
+            © 2026 NOVA MART. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /*
+         * IMPORTANT:
+         * This page uses the same cart key as the
+         * newer NOVA MART pages:
+         *
+         * novaMartCart
+         */
+
+        function getCart() {
+
+            try {
+
+                return JSON.parse(
+                    localStorage.getItem(
+                        "novaMartCart"
+                    )
+                ) || [];
+
+            } catch (error) {
+
+                return [];
+
+            }
+
+        }
+
+
+        function saveCart(cart) {
+
+            localStorage.setItem(
+                "novaMartCart",
+                JSON.stringify(cart)
+            );
+
+        }
+
+
+        function addToCart(
+            name,
+            price,
+            image
+        ) {
+
+            const cart = getCart();
+
+
+            const existingItem =
+                cart.find(
+                    item =>
+                        item.name === name
+                );
+
+
+            if (existingItem) {
+
+                existingItem.quantity =
+                    (existingItem.quantity || 1) + 1;
+
+            } else {
+
+                cart.push({
+
+                    id:
+                        "beauty-" +
+                        Date.now() +
+                        "-" +
+                        Math.random()
+                            .toString(36)
+                            .substring(2, 8),
+
+                    name: name,
+
+                    price: price,
+
+                    image: image,
+
+                    quantity: 1
+
+                });
+
+            }
+
+
+            saveCart(cart);
+
+
+            alert(
+                "✅ " +
+                name +
+                " added to your cart!"
+            );
+
+        }
+
+
+        function buyNow(
+            name,
+            price,
+            image
+        ) {
+
+            addToCart(
+                name,
+                price,
+                image
+            );
+
+
+            window.location.href =
+                "checkout.html";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

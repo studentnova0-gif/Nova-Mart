@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>NOVA MART | Sell on NOVA MART</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+        background: #f5f6f7;
+        color: #222;
+    }
+
+    /* HEADER */
+    header {
+        background: #131921;
+        color: white;
+        min-height: 72px;
+        padding: 14px 5%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        color: #ff9900;
+        font-size: 29px;
+        font-weight: 800;
+    }
+
+    .seller-label {
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .cart-link {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    /* NAVIGATION */
+    nav {
+        background: #232f3e;
+        padding: 13px 5%;
+        display: flex;
+        gap: 22px;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        transition: 0.2s;
+    }
+
+    nav a:hover,
+    nav a.active {
+        color: #ff9900;
+    }
+
+    /* HERO */
+    .hero {
+        min-height: 390px;
+        display: flex;
+        align-items: center;
+        padding: 55px 7%;
+        background:
+            linear-gradient(
+                90deg,
+                rgba(19,25,33,0.96),
+                rgba(19,25,33,0.78)
+            ),
+            url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1600&q=85")
+            center/cover;
+        color: white;
+    }
+
+    .hero-content {
+        max-width: 720px;
+    }
+
+    .hero-badge {
+        display: inline-block;
+        background: #ff9900;
+        color: #111;
+        padding: 8px 13px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 13px;
+        margin-bottom: 17px;
+    }
+
+    .hero h1 {
+        font-size: 46px;
+        line-height: 1.15;
+        margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+        color: #ff9900;
+    }
+
+    .hero p {
+        font-size: 18px;
+        line-height: 1.7;
+        color: #e5e7eb;
+        margin-bottom: 25px;
+    }
+
+    .hero-button {
+        display: inline-block;
+        background: #ff9900;
+        color: #111;
+        text-decoration: none;
+        padding: 14px 24px;
+        border-radius: 6px;
+        font-weight: bold;
+    }
+
+    /* CONTAINER */
+    .container {
+        max-width: 1150px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    /* BENEFITS */
+    .section-title {
+        text-align: center;
+        margin-bottom: 28px;
+    }
+
+    .section-title h2 {
+        font-size: 30px;
+        margin-bottom: 8px;
+    }
+
+    .section-title p {
+        color: #666;
+    }
+
+    .benefits {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+    }
+
+    .benefit {
+        background: white;
+        padding: 25px 18px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 3px 14px rgba(0,0,0,0.08);
+        transition: 0.25s;
+    }
+
+    .benefit:hover {
+        transform: translateY(-4px);
+    }
+
+    .benefit-icon {
+        font-size: 40px;
+        margin-bottom: 13px;
+    }
+
+    .benefit h3 {
+        font-size: 17px;
+        margin-bottom: 8px;
+    }
+
+    .benefit p {
+        color: #666;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    /* SELLER AREA */
+    .seller-layout {
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 25px;
+        margin-top: 45px;
+        align-items: start;
+    }
+
+    .seller-info {
+        background: #131921;
+        color: white;
+        border-radius: 12px;
+        padding: 32px;
+    }
+
+    .seller-info h2 {
+        color: #ff9900;
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    .seller-info p {
+        color: #ddd;
+        line-height: 1.7;
+        margin-bottom: 20px;
+    }
+
+    .seller-info ul {
+        list-style: none;
+    }
+
+    .seller-info li {
+        padding: 11px 0;
+        border-bottom: 1px solid #394553;
+        color: #eee;
+    }
+
+    .seller-info li:last-child {
+        border-bottom: none;
+    }
+
+    .seller-info li::before {
+        content: "✓";
+        color: #ff9900;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    /* FORM */
+    .form-box {
+        background: white;
+        padding: 32px;
+        border-radius: 12px;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.09);
+    }
+
+    .form-box h2 {
+        font-size: 27px;
+        margin-bottom: 7px;
+    }
+
+    .form-subtitle {
+        color: #666;
+        margin-bottom: 25px;
+        line-height: 1.5;
+    }
+
+    .group {
+        margin-bottom: 17px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 7px;
+        font-size: 14px;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+        padding: 12px 13px;
+        border: 1px solid #c9c9c9;
+        border-radius: 6px;
+        font-size: 15px;
+        outline: none;
+        transition: 0.2s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        border-color: #ff9900;
+        box-shadow: 0 0 0 2px rgba(255,153,0,0.15);
+    }
+
+    textarea {
+        min-height: 105px;
+        resize: vertical;
+    }
+
+    .two-columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .submit-button {
+        width: 100%;
+        border: none;
+        padding: 14px;
+        background: #ff9900;
+        color: #111;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .submit-button:hover {
+        background: #e88a00;
+    }
+
+    .submit-button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .message {
+        display: none;
+        margin-top: 16px;
+        padding: 13px;
+        border-radius: 6px;
+        text-align: center;
+        font-weight: bold;
+        line-height: 1.5;
+    }
+
+    .message.success {
+        display: block;
+        background: #dcfce7;
+        color: #166534;
+        border: 1px solid #86efac;
+    }
+
+    .message.error {
+        display: block;
+        background: #fee2e2;
+        color: #991b1b;
+        border: 1px solid #fca5a5;
+    }
+
+    /* STEPS */
+    .steps {
+        margin-top: 50px;
+    }
+
+    .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .step {
+        background: white;
+        border-radius: 10px;
+        padding: 25px;
+        text-align: center;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+    }
+
+    .step-number {
+        width: 45px;
+        height: 45px;
+        margin: 0 auto 15px;
+        border-radius: 50%;
+        background: #ff9900;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .step h3 {
+        margin-bottom: 8px;
+    }
+
+    .step p {
+        color: #666;
+        line-height: 1.5;
+        font-size: 14px;
+    }
+
+    /* FOOTER */
+    footer {
+        background: #131921;
+        color: white;
+        margin-top: 55px;
+        padding: 40px 6%;
+    }
+
+    .footer-grid {
+        max-width: 1150px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+    }
+
+    footer h3 {
+        color: #ff9900;
+        margin-bottom: 13px;
+    }
+
+    footer a {
+        display: block;
+        color: #ddd;
+        text-decoration: none;
+        margin: 8px 0;
+        font-size: 14px;
+    }
+
+    footer a:hover {
+        color: white;
+    }
+
+    .copyright {
+        max-width: 1150px;
+        margin: 30px auto 0;
+        padding-top: 20px;
+        border-top: 1px solid #394553;
+        text-align: center;
+        color: #aaa;
+        font-size: 13px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 950px) {
+        .benefits {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .seller-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .footer-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 650px) {
+        header {
+            padding: 14px 4%;
+        }
+
+        nav {
+            padding: 12px 4%;
+            gap: 13px;
+        }
+
+        nav a {
+            font-size: 13px;
+        }
+
+        .hero {
+            min-height: 330px;
+            padding: 40px 6%;
+        }
+
+        .hero h1 {
+            font-size: 34px;
+        }
+
+        .hero p {
+            font-size: 15px;
+        }
+
+        .benefits,
+        .steps-grid,
+        .two-columns {
+            grid-template-columns: 1fr;
+        }
+
+        .form-box,
+        .seller-info {
+            padding: 24px 20px;
+        }
+
+        .footer-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<header>
+
+```
+<div class="logo">NOVA MART</div>
+
+<div class="seller-label">
+    🏪 Seller Center
+</div>
+
+<a href="cart.html" class="cart-link">
+    🛒 Cart
+</a>
+```
+
+</header>
+
+<nav>
+
+```
+<a href="index.html">Home</a>
+<a href="deals.html">Today's Deals</a>
+<a href="best-sellers.html">Best Sellers</a>
+<a href="new-arrivals.html">New Arrivals</a>
+<a href="electronics.html">Electronics</a>
+<a href="fashion.html">Fashion</a>
+<a href="home-kitchen.html">Home & Kitchen</a>
+<a href="beauty.html">Beauty</a>
+<a href="sports.html">Sports</a>
+<a href="seller.html" class="active">Sell on NOVA MART</a>
+```
+
+</nav>
+
+<section class="hero">
+
+```
+<div class="hero-content">
+
+    <div class="hero-badge">
+        🏪 NOVA MART SELLER CENTER
+    </div>
+
+    <h1>
+        Start Selling on
+        <span>NOVA MART</span>
+    </h1>
+
+    <p>
+        Register your business, showcase your products and
+        build your online store through the NOVA MART marketplace.
+    </p>
+
+    <a href="#seller-form" class="hero-button">
+        Become a Seller
+    </a>
+
+</div>
+```
+
+</section>
+
+<div class="container">
+
+```
+<section>
+
+    <div class="section-title">
+        <h2>Why Sell With NOVA MART?</h2>
+        <p>Simple tools and features to help you manage your online business.</p>
+    </div>
+
+    <div class="benefits">
+
+        <div class="benefit">
+            <div class="benefit-icon">👥</div>
+            <h3>Reach Customers</h3>
+            <p>
+                Put your products in front of customers
+                browsing the NOVA MART marketplace.
+            </p>
+        </div>
+
+        <div class="benefit">
+            <div class="benefit-icon">📦</div>
+            <h3>Manage Products</h3>
+            <p>
+                Organize your products, categories,
+                prices and inventory.
+            </p>
+        </div>
+
+        <div class="benefit">
+            <div class="benefit-icon">📊</div>
+            <h3>Grow Your Business</h3>
+            <p>
+                Build your online presence and expand
+                your product catalog.
+            </p>
+        </div>
+
+        <div class="benefit">
+            <div class="benefit-icon">💰</div>
+            <h3>Sell Online</h3>
+            <p>
+                Create a convenient online shopping
+                experience for your customers.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="seller-layout" id="seller-form">
+
+    <div class="seller-info">
+
+        <h2>Seller Registration</h2>
+
+        <p>
+            Fill out the registration form with your business
+            information. Your application will be saved for
+            further seller management.
+        </p>
+
+        <ul>
+            <li>Simple seller registration</li>
+            <li>Multiple product categories</li>
+            <li>Business information management</li>
+            <li>Online product selling</li>
+            <li>Marketplace presence</li>
+        </ul>
+
+    </div>
+
+    <div class="form-box">
+
+        <h2>Create Seller Account</h2>
+
+        <p class="form-subtitle">
+            Enter your details below to submit a seller application.
+        </p>
+
+        <form id="sellerForm">
+
+            <div class="group">
+
+                <label for="sellerName">
+                    Business / Seller Name *
+                </label>
+
+                <input
+                    type="text"
+                    id="sellerName"
+                    placeholder="Enter business or seller name"
+                    minlength="2"
+                    required
+                >
+
+            </div>
+
+            <div class="two-columns">
+
+                <div class="group">
+
+                    <label for="email">
+                        Email Address *
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="seller@example.com"
+                        required
+                    >
+
+                </div>
+
+                <div class="group">
+
+                    <label for="phone">
+                        Phone Number *
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="03XX XXXXXXX"
+                        minlength="10"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+            <div class="group">
+
+                <label for="category">
+                    Main Product Category *
+                </label>
+
+                <select id="category" required>
+
+                    <option value="">
+                        Select Category
+                    </option>
+
+                    <option value="Electronics">
+                        Electronics
+                    </option>
+
+                    <option value="Fashion">
+                        Fashion
+                    </option>
+
+                    <option value="Home & Kitchen">
+                        Home & Kitchen
+                    </option>
+
+                    <option value="Beauty">
+                        Beauty
+                    </option>
+
+                    <option value="Sports">
+                        Sports
+                    </option>
+
+                    <option value="Mobile Accessories">
+                        Mobile Accessories
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="group">
+
+                <label for="businessType">
+                    Business Type *
+                </label>
+
+                <select id="businessType" required>
+
+                    <option value="">
+                        Select Business Type
+                    </option>
+
+                    <option value="Individual Seller">
+                        Individual Seller
+                    </option>
+
+                    <option value="Small Business">
+                        Small Business
+                    </option>
+
+                    <option value="Retail Store">
+                        Retail Store
+                    </option>
+
+                    <option value="Manufacturer">
+                        Manufacturer
+                    </option>
+
+                    <option value="Wholesale">
+                        Wholesale
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="group">
+
+                <label for="address">
+                    Business Address *
+                </label>
+
+                <textarea
+                    id="address"
+                    placeholder="Enter your complete business address"
+                    minlength="10"
+                    required
+                ></textarea>
+
+            </div>
+
+            <button
+                type="submit"
+                class="submit-button"
+                id="submitButton"
+            >
+                Register as Seller
+            </button>
+
+            <div
+                class="message"
+                id="message"
+                aria-live="polite"
+            ></div>
+
+        </form>
+
+    </div>
+
+</section>
+
+<section class="steps">
+
+    <div class="section-title">
+
+        <h2>How It Works</h2>
+
+        <p>
+            Getting started as a NOVA MART seller is simple.
+        </p>
+
+    </div>
+
+    <div class="steps-grid">
+
+        <div class="step">
+
+            <div class="step-number">1</div>
+
+            <h3>Register</h3>
+
+            <p>
+                Submit your seller and business information
+                through the registration form.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <div class="step-number">2</div>
+
+            <h3>Add Products</h3>
+
+            <p>
+                Prepare your product catalog with names,
+                prices, images and descriptions.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <div class="step-number">3</div>
+
+            <h3>Start Selling</h3>
+
+            <p>
+                Once your seller process is set up,
+                your products can be prepared for marketplace sales.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+```
+
+</div>
+
+<footer>
+
+```
+<div class="footer-grid">
+
+    <div>
+        <h3>NOVA MART</h3>
+        <a href="index.html">Home</a>
+        <a href="deals.html">Today's Deals</a>
+        <a href="best-sellers.html">Best Sellers</a>
+    </div>
+
+    <div>
+        <h3>Categories</h3>
+        <a href="electronics.html">Electronics</a>
+        <a href="fashion.html">Fashion</a>
+        <a href="home-kitchen.html">Home & Kitchen</a>
+        <a href="beauty.html">Beauty</a>
+    </div>
+
+    <div>
+        <h3>Seller Center</h3>
+        <a href="seller.html">Become a Seller</a>
+        <a href="#seller-form">Seller Registration</a>
+        <a href="#">Seller Help</a>
+    </div>
+
+    <div>
+        <h3>Customer</h3>
+        <a href="cart.html">Shopping Cart</a>
+        <a href="checkout.html">Checkout</a>
+        <a href="#">Customer Support</a>
+    </div>
+
+</div>
+
+<div class="copyright">
+    © 2026 NOVA MART. All Rights Reserved.
+</div>
+```
+
+</footer>
+
+<script>
+
+    const sellerForm =
+        document.getElementById("sellerForm");
+
+    const message =
+        document.getElementById("message");
+
+    const submitButton =
+        document.getElementById("submitButton");
+
+
+    sellerForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        message.className = "message";
+        message.textContent = "";
+
+        const seller = {
+
+            id:
+                "SELLER-" +
+                Date.now(),
+
+            name:
+                document
+                    .getElementById("sellerName")
+                    .value
+                    .trim(),
+
+            email:
+                document
+                    .getElementById("email")
+                    .value
+                    .trim()
+                    .toLowerCase(),
+
+            phone:
+                document
+                    .getElementById("phone")
+                    .value
+                    .trim(),
+
+            category:
+                document
+                    .getElementById("category")
+                    .value,
+
+            businessType:
+                document
+                    .getElementById("businessType")
+                    .value,
+
+            address:
+                document
+                    .getElementById("address")
+                    .value
+                    .trim(),
+
+            status:
+                "Pending",
+
+            createdAt:
+                new Date().toISOString()
+
+        };
+
+
+        if (
+            seller.name.length < 2 ||
+            seller.address.length < 10
+        ) {
+
+            message.className =
+                "message error";
+
+            message.textContent =
+                "Please enter valid business information.";
+
+            return;
+        }
+
+
+        submitButton.disabled = true;
+
+        submitButton.textContent =
+            "Submitting...";
+
+
+        setTimeout(function() {
+
+            try {
+
+                localStorage.setItem(
+                    "sellerApplication",
+                    JSON.stringify(seller)
+                );
+
+
+                const applications =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "sellerApplications"
+                        )
+                    ) || [];
+
+
+                applications.push(seller);
+
+
+                localStorage.setItem(
+                    "sellerApplications",
+                    JSON.stringify(applications)
+                );
+
+
+                message.className =
+                    "message success";
+
+                message.innerHTML =
+                    "✓ Seller registration submitted successfully!<br>" +
+                    "Application ID: " +
+                    seller.id;
+
+
+                sellerForm.reset();
+
+
+            } catch (error) {
+
+                message.className =
+                    "message error";
+
+                message.textContent =
+                    "Unable to save the application. Please try again.";
+
+            }
+
+
+            submitButton.disabled = false;
+
+            submitButton.textContent =
+                "Register as Seller";
+
+        }, 500);
+
+    });
+
+</script>
+
+</body>
+</html>

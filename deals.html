@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>NOVA MART | Today's Deals</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f5f5f5;
+            color: #222;
+        }
+
+
+        /* ================= HEADER ================= */
+
+        header {
+            background: #131921;
+            color: white;
+            padding: 16px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            color: #ff9900;
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .store-text {
+            font-size: 17px;
+        }
+
+        .cart-link {
+            background: #ff9900;
+            color: #111;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+
+        /* ================= NAV ================= */
+
+        nav {
+            background: #232f3e;
+            padding: 13px 5%;
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #ff9900;
+        }
+
+
+        /* ================= HERO ================= */
+
+        .hero {
+            width: 90%;
+            max-width: 1250px;
+            margin: 25px auto;
+
+            min-height: 300px;
+
+            border-radius: 16px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            color: white;
+
+            padding: 45px 25px;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.48),
+                    rgba(0, 0, 0, 0.48)
+                ),
+                url("https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&w=1400&q=85")
+                center/cover;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 22px;
+        }
+
+        .deal-button {
+            display: inline-block;
+            background: #ff9900;
+            color: #111;
+            padding: 13px 25px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+
+        /* ================= COUNTDOWN ================= */
+
+        .countdown-box {
+            width: 90%;
+            max-width: 1000px;
+            margin: -5px auto 35px;
+
+            background: white;
+
+            border-radius: 12px;
+
+            padding: 22px;
+
+            text-align: center;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .countdown-title {
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .time-box {
+            min-width: 75px;
+            background: #131921;
+            color: white;
+            border-radius: 7px;
+            padding: 12px;
+        }
+
+        .time-box strong {
+            display: block;
+            color: #ff9900;
+            font-size: 25px;
+        }
+
+        .time-box span {
+            font-size: 11px;
+            color: #ddd;
+        }
+
+
+        /* ================= CONTAINER ================= */
+
+        .container {
+            max-width: 1250px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 22px;
+        }
+
+        .section-header h2 {
+            font-size: 28px;
+        }
+
+        .section-header span {
+            color: #777;
+            font-size: 14px;
+        }
+
+
+        /* ================= PRODUCTS ================= */
+
+        .products {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(220px, 1fr)
+                );
+
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 3px 12px rgba(0, 0, 0, 0.08);
+
+            transition:
+                transform 0.25s,
+                box-shadow 0.25s;
+
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.14);
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+
+            background: #d32f2f;
+            color: white;
+
+            padding: 7px 10px;
+
+            border-radius: 5px;
+
+            font-size: 12px;
+            font-weight: bold;
+
+            z-index: 2;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 220px;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+        .product-info {
+            padding: 17px;
+        }
+
+        .product-name {
+            font-size: 17px;
+            line-height: 1.4;
+
+            min-height: 47px;
+        }
+
+        .rating {
+            color: #f59e0b;
+
+            margin: 9px 0;
+
+            font-size: 14px;
+        }
+
+        .rating span {
+            color: #777;
+            margin-left: 5px;
+        }
+
+        .price {
+            color: #e47911;
+
+            font-size: 21px;
+
+            font-weight: bold;
+        }
+
+        .old-price {
+            color: #999;
+
+            font-size: 13px;
+
+            text-decoration: line-through;
+
+            margin-left: 6px;
+
+            font-weight: normal;
+        }
+
+        .saving {
+            color: #198754;
+
+            font-size: 13px;
+
+            margin-top: 6px;
+        }
+
+        .delivery {
+            color: #555;
+
+            font-size: 13px;
+
+            margin-top: 7px;
+        }
+
+
+        /* ================= BUTTONS ================= */
+
+        .button-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        button {
+            flex: 1;
+
+            border: none;
+
+            padding: 11px 10px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+        }
+
+        .cart-btn {
+            background: #ffd814;
+            color: #111;
+        }
+
+        .cart-btn:hover {
+            background: #f7ca00;
+        }
+
+        .buy-btn {
+            background: #ff9900;
+            color: #111;
+        }
+
+        .buy-btn:hover {
+            background: #e88b00;
+        }
+
+
+        /* ================= DEAL CATEGORIES ================= */
+
+        .deal-categories {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(180px, 1fr)
+                );
+
+            gap: 15px;
+
+            margin-top: 45px;
+        }
+
+        .deal-category {
+            background: white;
+
+            padding: 25px 15px;
+
+            border-radius: 10px;
+
+            text-align: center;
+
+            box-shadow:
+                0 3px 10px rgba(0, 0, 0, 0.07);
+
+            text-decoration: none;
+
+            color: #222;
+
+            transition: 0.2s;
+        }
+
+        .deal-category:hover {
+            transform: translateY(-3px);
+            color: #ff6a00;
+        }
+
+        .deal-category .icon {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+
+        /* ================= INFO ================= */
+
+        .info-box {
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 12px;
+
+            margin-top: 45px;
+
+            line-height: 1.7;
+        }
+
+        .info-box h2 {
+            margin-bottom: 12px;
+        }
+
+        .info-box p {
+            color: #555;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #131921;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 30px 20px;
+
+            margin-top: 60px;
+        }
+
+        .footer-logo {
+            color: #ff9900;
+
+            font-size: 24px;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #ccc;
+            margin: 6px 0;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 14px 4%;
+                flex-wrap: wrap;
+            }
+
+            .logo {
+                font-size: 23px;
+            }
+
+            .store-text {
+                font-size: 14px;
+            }
+
+            nav {
+                gap: 14px;
+                padding: 12px 4%;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .hero {
+                min-height: 260px;
+            }
+
+            .hero h1 {
+                font-size: 31px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .products {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+                gap: 12px;
+            }
+
+            .product-image {
+                height: 165px;
+            }
+
+            .product-info {
+                padding: 11px;
+            }
+
+            .product-name {
+                font-size: 14px;
+            }
+
+            .price {
+                font-size: 17px;
+            }
+
+            .old-price {
+                display: block;
+                margin-left: 0;
+                margin-top: 3px;
+            }
+
+            .button-row {
+                flex-direction: column;
+            }
+
+            .time-box {
+                min-width: 65px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <a
+            href="index.html"
+            class="logo"
+        >
+            NOVA MART
+        </a>
+
+        <div class="store-text">
+            🛍️ Your Online Store
+        </div>
+
+        <a
+            href="cart.html"
+            class="cart-link"
+        >
+            🛒 Cart
+        </a>
+
+    </header>
+
+
+    <!-- ================= NAVIGATION ================= -->
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a
+            href="deals.html"
+            class="active"
+        >
+            Today's Deals
+        </a>
+
+        <a href="best-sellers.html">
+            Best Sellers
+        </a>
+
+        <a href="new-arrivals.html">
+            New Arrivals
+        </a>
+
+        <a href="electronics.html">
+            Electronics
+        </a>
+
+        <a href="fashion.html">
+            Fashion
+        </a>
+
+        <a href="home-kitchen.html">
+            Home & Kitchen
+        </a>
+
+        <a href="beauty.html">
+            Beauty
+        </a>
+
+        <a href="sports.html">
+            Sports
+        </a>
+
+        <a href="seller.html">
+            Sell on NOVA MART
+        </a>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                🔥 Today's Deals
+            </h1>
+
+            <p>
+                Big savings on electronics, fashion,
+                home essentials and more.
+            </p>
+
+            <a
+                href="#deals"
+                class="deal-button"
+            >
+                Shop Deals
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= COUNTDOWN ================= -->
+
+    <section class="countdown-box">
+
+        <div class="countdown-title">
+            ⏰ Flash Deals End In
+        </div>
+
+        <div class="timer">
+
+            <div class="time-box">
+
+                <strong id="hours">
+                    08
+                </strong>
+
+                <span>
+                    HOURS
+                </span>
+
+            </div>
+
+            <div class="time-box">
+
+                <strong id="minutes">
+                    30
+                </strong>
+
+                <span>
+                    MINUTES
+                </span>
+
+            </div>
+
+            <div class="time-box">
+
+                <strong id="seconds">
+                    00
+                </strong>
+
+                <span>
+                    SECONDS
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= DEAL PRODUCTS ================= -->
+
+    <main
+        class="container"
+        id="deals"
+    >
+
+        <div class="section-header">
+
+            <h2>
+                🔥 Hot Deals
+            </h2>
+
+            <span>
+                Limited-time offers
+            </span>
+
+        </div>
+
+
+        <div class="products">
+
+
+            <!-- SMARTPHONE -->
+
+            <div class="card">
+
+                <span class="discount-badge">
+                    20% OFF
+                </span>
+
+                <img
+                    class="product-image"
+                    src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=85"
+                    alt="Smartphone"
+                >
+
+                <div class="product-info">
+
+                    <h3 class="product-name">
+                        Nova X Pro Smartphone
+                    </h3>
+
+                    <div class="rating">
+                        ⭐⭐⭐⭐⭐
+                        <span>
+                            4.8 (326)
+                        </span>
+                    </div>
+
+                    <div class="price">
+                        Rs. 39,999
+
+                        <span class="old-price">
+                            Rs. 49,999
+                        </span>
+                    </div>
+
+                    <div class="saving">
+                        Save Rs. 10,000
+                    </div>
+
+                    <div class="delivery">
+                        🚚 Free delivery
+                    </div>
+
+                    <div class="button-row">
+
+                        <button
+                            class="cart-btn"
+                            onclick="addToCart(
+                                'Nova X Pro Smartphone',
+                                39999,
+                                'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            🛒 Add to Cart
+                        </button>
+
+                        <button
+                            class="buy-btn"
+                            onclick="buyNow(
+                                'Nova X Pro Smartphone',
+                                39999,
+                                'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- HEADPHONES -->
+
+            <div class="card">
+
+                <span class="discount-badge">
+                    35% OFF
+                </span>
+
+                <img
+                    class="product-image"
+                    src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=85"
+                    alt="Wireless Headphones"
+                >
+
+                <div class="product-info">
+
+                    <h3 class="product-name">
+                        Pro Wireless Noise-Cancelling Headphones
+                    </h3>
+
+                    <div class="rating">
+                        ⭐⭐⭐⭐⭐
+                        <span>
+                            4.7 (218)
+                        </span>
+                    </div>
+
+                    <div class="price">
+                        Rs. 4,999
+
+                        <span class="old-price">
+                            Rs. 7,699
+                        </span>
+                    </div>
+
+                    <div class="saving">
+                        Save Rs. 2,700
+                    </div>
+
+                    <div class="delivery">
+                        🚚 Free delivery
+                    </div>
+
+                    <div class="button-row">
+
+                        <button
+                            class="cart-btn"
+                            onclick="addToCart(
+                                'Pro Wireless Noise-Cancelling Headphones',
+                                4999,
+                                'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            🛒 Add to Cart
+                        </button>
+
+                        <button
+                            class="buy-btn"
+                            onclick="buyNow(
+                                'Pro Wireless Noise-Cancelling Headphones',
+                                4999,
+                                'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SMART WATCH -->
+
+            <div class="card">
+
+                <span class="discount-badge">
+                    30% OFF
+                </span>
+
+                <img
+                    class="product-image"
+                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=85"
+                    alt="Smart Watch"
+                >
+
+                <div class="product-info">
+
+                    <h3 class="product-name">
+                        Nova Fit Smart Watch
+                    </h3>
+
+                    <div class="rating">
+                        ⭐⭐⭐⭐⭐
+                        <span>
+                            4.6 (194)
+                        </span>
+                    </div>
+
+                    <div class="price">
+                        Rs. 6,999
+
+                        <span class="old-price">
+                            Rs. 9,999
+                        </span>
+                    </div>
+
+                    <div class="saving">
+                        Save Rs. 3,000
+                    </div>
+
+                    <div class="delivery">
+                        🚚 Free delivery
+                    </div>
+
+                    <div class="button-row">
+
+                        <button
+                            class="cart-btn"
+                            onclick="addToCart(
+                                'Nova Fit Smart Watch',
+                                6999,
+                                'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            🛒 Add to Cart
+                        </button>
+
+                        <button
+                            class="buy-btn"
+                            onclick="buyNow(
+                                'Nova Fit Smart Watch',
+                                6999,
+                                'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SHOES -->
+
+            <div class="card">
+
+                <span class="discount-badge">
+                    33% OFF
+                </span>
+
+                <img
+                    class="product-image"
+                    src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=85"
+                    alt="Running Shoes"
+                >
+
+                <div class="product-info">
+
+                    <h3 class="product-name">
+                        Premium Running Shoes
+                    </h3>
+
+                    <div class="rating">
+                        ⭐⭐⭐⭐☆
+                        <span>
+                            4.5 (157)
+                        </span>
+                    </div>
+
+                    <div class="price">
+                        Rs. 3,999
+
+                        <span class="old-price">
+                            Rs. 5,999
+                        </span>
+                    </div>
+
+                    <div class="saving">
+                        Save Rs. 2,000
+                    </div>
+
+                    <div class="delivery">
+                        🚚 Free delivery
+                    </div>
+
+                    <div class="button-row">
+
+                        <button
+                            class="cart-btn"
+                            onclick="addToCart(
+                                'Premium Running Shoes',
+                                3999,
+                                'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            🛒 Add to Cart
+                        </button>
+
+                        <button
+                            class="buy-btn"
+                            onclick="buyNow(
+                                'Premium Running Shoes',
+                                3999,
+                                'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- LAPTOP -->
+
+            <div class="card">
+
+                <span class="discount-badge">
+                    18% OFF
+                </span>
+
+                <img
+                    class="product-image"
+                    src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=85"
+                    alt="Laptop"
+                >
+
+                <div class="product-info">
+
+                    <h3 class="product-name">
+                        NovaBook Pro Laptop
+                    </h3>
+
+                    <div class="rating">
+                        ⭐⭐⭐⭐⭐
+                        <span>
+                            4.8 (87)
+                        </span>
+                    </div>
+
+                    <div class="price">
+                        Rs. 89,999
+
+                        <span class="old-price">
+                            Rs. 109,999
+                        </span>
+                    </div>
+
+                    <div class="saving">
+                        Save Rs. 20,000
+                    </div>
+
+                    <div class="delivery">
+                        🚚 Free delivery
+                    </div>
+
+                    <div class="button-row">
+
+                        <button
+                            class="cart-btn"
+                            onclick="addToCart(
+                                'NovaBook Pro Laptop',
+                                89999,
+                                'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            🛒 Add to Cart
+                        </button>
+
+                        <button
+                            class="buy-btn"
+                            onclick="buyNow(
+                                'NovaBook Pro Laptop',
+                                89999,
+                                'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BACKPACK -->
+
+            <div class="card">
+
+                <span class="discount-badge">
+                    25% OFF
+                </span>
+
+                <img
+                    class="product-image"
+                    src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=85"
+                    alt="Backpack"
+                >
+
+                <div class="product-info">
+
+                    <h3 class="product-name">
+                        Premium Travel Backpack
+                    </h3>
+
+                    <div class="rating">
+                        ⭐⭐⭐⭐☆
+                        <span>
+                            4.5 (143)
+                        </span>
+                    </div>
+
+                    <div class="price">
+                        Rs. 2,999
+
+                        <span class="old-price">
+                            Rs. 3,999
+                        </span>
+                    </div>
+
+                    <div class="saving">
+                        Save Rs. 1,000
+                    </div>
+
+                    <div class="delivery">
+                        🚚 Free delivery
+                    </div>
+
+                    <div class="button-row">
+
+                        <button
+                            class="cart-btn"
+                            onclick="addToCart(
+                                'Premium Travel Backpack',
+                                2999,
+                                'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            🛒 Add to Cart
+                        </button>
+
+                        <button
+                            class="buy-btn"
+                            onclick="buyNow(
+                                'Premium Travel Backpack',
+                                2999,
+                                'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BLENDER -->
+
+            <div class="card">
+
+                <span class="discount-badge">
+                    22% OFF
+                </span>
+
+                <img
+                    class="product-image"
+                    src="https://images.unsplash.com/photo-1570222094114-d054a817e56b?auto=format&fit=crop&w=700&q=85"
+                    alt="Kitchen Blender"
+                >
+
+                <div class="product-info">
+
+                    <h3 class="product-name">
+                        Multi-Speed Kitchen Blender
+                    </h3>
+
+                    <div class="rating">
+                        ⭐⭐⭐⭐☆
+                        <span>
+                            4.4 (91)
+                        </span>
+                    </div>
+
+                    <div class="price">
+                        Rs. 5,499
+
+                        <span class="old-price">
+                            Rs. 6,999
+                        </span>
+                    </div>
+
+                    <div class="saving">
+                        Save Rs. 1,500
+                    </div>
+
+                    <div class="delivery">
+                        🚚 Free delivery
+                    </div>
+
+                    <div class="button-row">
+
+                        <button
+                            class="cart-btn"
+                            onclick="addToCart(
+                                'Multi-Speed Kitchen Blender',
+                                5499,
+                                'https://images.unsplash.com/photo-1570222094114-d054a817e56b?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            🛒 Add to Cart
+                        </button>
+
+                        <button
+                            class="buy-btn"
+                            onclick="buyNow(
+                                'Multi-Speed Kitchen Blender',
+                                5499,
+                                'https://images.unsplash.com/photo-1570222094114-d054a817e56b?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PERFUME -->
+
+            <div class="card">
+
+                <span class="discount-badge">
+                    28% OFF
+                </span>
+
+                <img
+                    class="product-image"
+                    src="https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=700&q=85"
+                    alt="Perfume"
+                >
+
+                <div class="product-info">
+
+                    <h3 class="product-name">
+                        Premium Fragrance Gift Set
+                    </h3>
+
+                    <div class="rating">
+                        ⭐⭐⭐⭐⭐
+                        <span>
+                            4.8 (112)
+                        </span>
+                    </div>
+
+                    <div class="price">
+                        Rs. 4,499
+
+                        <span class="old-price">
+                            Rs. 6,299
+                        </span>
+                    </div>
+
+                    <div class="saving">
+                        Save Rs. 1,800
+                    </div>
+
+                    <div class="delivery">
+                        🚚 Free delivery
+                    </div>
+
+                    <div class="button-row">
+
+                        <button
+                            class="cart-btn"
+                            onclick="addToCart(
+                                'Premium Fragrance Gift Set',
+                                4499,
+                                'https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            🛒 Add to Cart
+                        </button>
+
+                        <button
+                            class="buy-btn"
+                            onclick="buyNow(
+                                'Premium Fragrance Gift Set',
+                                4499,
+                                'https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?auto=format&fit=crop&w=700&q=85'
+                            )"
+                        >
+                            Buy Now
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= DEAL CATEGORIES ================= -->
+
+        <div class="section-header" style="margin-top: 55px;">
+
+            <h2>
+                🛍️ Shop Deals By Category
+            </h2>
+
+        </div>
+
+
+        <div class="deal-categories">
+
+            <a
+                href="electronics.html"
+                class="deal-category"
+            >
+
+                <div class="icon">
+                    📱
+                </div>
+
+                <h3>
+                    Electronics
+                </h3>
+
+                <p>
+                    Phones, laptops & gadgets
+                </p>
+
+            </a>
+
+
+            <a
+                href="fashion.html"
+                class="deal-category"
+            >
+
+                <div class="icon">
+                    👕
+                </div>
+
+                <h3>
+                    Fashion
+                </h3>
+
+                <p>
+                    Clothing & footwear
+                </p>
+
+            </a>
+
+
+            <a
+                href="home-kitchen.html"
+                class="deal-category"
+            >
+
+                <div class="icon">
+                    🏠
+                </div>
+
+                <h3>
+                    Home & Kitchen
+                </h3>
+
+                <p>
+                    Everyday essentials
+                </p>
+
+            </a>
+
+
+            <a
+                href="beauty.html"
+                class="deal-category"
+            >
+
+                <div class="icon">
+                    💄
+                </div>
+
+                <h3>
+                    Beauty
+                </h3>
+
+                <p>
+                    Beauty & personal care
+                </p>
+
+            </a>
+
+
+            <a
+                href="sports.html"
+                class="deal-category"
+            >
+
+                <div class="icon">
+                    ⚽
+                </div>
+
+                <h3>
+                    Sports
+                </h3>
+
+                <p>
+                    Fitness & sports gear
+                </p>
+
+            </a>
+
+        </div>
+
+
+        <!-- ================= INFO ================= -->
+
+        <section class="info-box">
+
+            <h2>
+                🔥 NOVA MART Daily Deals
+            </h2>
+
+            <p>
+                Check NOVA MART every day for limited-time
+                offers across electronics, fashion, home
+                and kitchen, beauty, sports and more.
+                Prices and availability can change as
+                promotions end, so add your favorite items
+                to your cart while the deal is available.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-logo">
+            NOVA MART
+        </div>
+
+        <p>
+            Your trusted online shopping destination.
+        </p>
+
+        <p>
+            © 2026 NOVA MART. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* =================================================
+           CART
+        ================================================= */
+
+        function getCart() {
+
+            try {
+
+                return JSON.parse(
+                    localStorage.getItem(
+                        "novaMartCart"
+                    )
+                ) || [];
+
+            } catch (error) {
+
+                return [];
+
+            }
+
+        }
+
+
+        function saveCart(cart) {
+
+            localStorage.setItem(
+                "novaMartCart",
+                JSON.stringify(cart)
+            );
+
+        }
+
+
+        function addToCart(
+            name,
+            price,
+            image
+        ) {
+
+            const cart = getCart();
+
+
+            const existingItem =
+                cart.find(
+                    item =>
+                        item.name === name
+                );
+
+
+            if (existingItem) {
+
+                existingItem.quantity =
+                    (existingItem.quantity || 1) + 1;
+
+            } else {
+
+                cart.push({
+
+                    id:
+                        "deal-" +
+                        Date.now() +
+                        "-" +
+                        Math.random()
+                            .toString(36)
+                            .substring(2, 8),
+
+                    name: name,
+
+                    price: price,
+
+                    image: image,
+
+                    quantity: 1
+
+                });
+
+            }
+
+
+            saveCart(cart);
+
+
+            alert(
+                "✅ " +
+                name +
+                " added to your cart!"
+            );
+
+        }
+
+
+        function buyNow(
+            name,
+            price,
+            image
+        ) {
+
+            addToCart(
+                name,
+                price,
+                image
+            );
+
+
+            window.location.href =
+                "checkout.html";
+
+        }
+
+
+        /* =================================================
+           FLASH DEAL COUNTDOWN
+        ================================================= */
+
+        let totalSeconds =
+            (8 * 60 * 60) +
+            (30 * 60);
+
+
+        function updateCountdown() {
+
+            if (totalSeconds <= 0) {
+
+                totalSeconds =
+                    (8 * 60 * 60) +
+                    (30 * 60);
+
+            }
+
+
+            const hours =
+                Math.floor(
+                    totalSeconds / 3600
+                );
+
+            const minutes =
+                Math.floor(
+                    (totalSeconds % 3600) / 60
+                );
+
+            const seconds =
+                totalSeconds % 60;
+
+
+            document.getElementById(
+                "hours"
+            ).textContent =
+                String(hours).padStart(
+                    2,
+                    "0"
+                );
+
+
+            document.getElementById(
+                "minutes"
+            ).textContent =
+                String(minutes).padStart(
+                    2,
+                    "0"
+                );
+
+
+            document.getElementById(
+                "seconds"
+            ).textContent =
+                String(seconds).padStart(
+                    2,
+                    "0"
+                );
+
+
+            totalSeconds--;
+
+        }
+
+
+        updateCountdown();
+
+        setInterval(
+            updateCountdown,
+            1000
+        );
+
+    </script>
+
+
+</body>
+
+</html>

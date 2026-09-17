@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>NOVA MART | Home & Kitchen</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+        background: #f5f6f7;
+        color: #222;
+    }
+
+    /* HEADER */
+    header {
+        background: #131921;
+        color: white;
+        min-height: 72px;
+        padding: 14px 5%;
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        color: #ff9900;
+        font-size: 29px;
+        font-weight: 800;
+        white-space: nowrap;
+    }
+
+    .search-box {
+        flex: 1;
+        min-width: 230px;
+        display: flex;
+        height: 42px;
+    }
+
+    .search-box input {
+        width: 100%;
+        border: none;
+        padding: 0 15px;
+        font-size: 15px;
+        outline: none;
+        border-radius: 5px 0 0 5px;
+    }
+
+    .search-box button {
+        width: 55px;
+        border: none;
+        background: #febd69;
+        cursor: pointer;
+        font-size: 19px;
+        border-radius: 0 5px 5px 0;
+    }
+
+    .cart-link {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        white-space: nowrap;
+    }
+
+    .cart-count {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 23px;
+        height: 23px;
+        padding: 0 6px;
+        background: #ff9900;
+        color: #111;
+        border-radius: 20px;
+        font-size: 12px;
+        margin-left: 4px;
+    }
+
+    /* NAVIGATION */
+    nav {
+        background: #232f3e;
+        padding: 13px 5%;
+        display: flex;
+        gap: 22px;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        transition: 0.2s;
+    }
+
+    nav a:hover,
+    nav a.active {
+        color: #ff9900;
+    }
+
+    /* HERO */
+    .hero {
+        min-height: 310px;
+        padding: 45px 6%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        background:
+            linear-gradient(
+                90deg,
+                rgba(255,255,255,0.97),
+                rgba(255,255,255,0.72)
+            ),
+            url("https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1600&q=85")
+            center/cover;
+    }
+
+    .hero-content {
+        max-width: 650px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+        color: #131921;
+        margin-bottom: 12px;
+    }
+
+    .hero h1 span {
+        color: #e47911;
+    }
+
+    .hero p {
+        font-size: 18px;
+        line-height: 1.6;
+        color: #555;
+        margin-bottom: 22px;
+    }
+
+    .hero-button {
+        display: inline-block;
+        background: #ff9900;
+        color: #111;
+        text-decoration: none;
+        padding: 13px 24px;
+        border-radius: 6px;
+        font-weight: bold;
+    }
+
+    /* CONTAINER */
+    .container {
+        max-width: 1250px;
+        margin: 35px auto;
+        padding: 0 20px;
+    }
+
+    .section-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 22px;
+        flex-wrap: wrap;
+    }
+
+    .section-heading h2 {
+        font-size: 28px;
+    }
+
+    .section-heading p {
+        color: #666;
+    }
+
+    /* CATEGORY BOXES */
+    .categories {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 15px;
+        margin-bottom: 40px;
+    }
+
+    .category {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        color: #222;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        transition: 0.25s;
+    }
+
+    .category:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 7px 20px rgba(0,0,0,0.13);
+    }
+
+    .category-icon {
+        font-size: 38px;
+        margin-bottom: 10px;
+    }
+
+    .category h3 {
+        font-size: 15px;
+    }
+
+    /* PRODUCTS */
+    .products {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        transition: 0.25s;
+        position: relative;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 22px rgba(0,0,0,0.14);
+    }
+
+    .badge {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: #cc0c39;
+        color: white;
+        padding: 6px 9px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: bold;
+        z-index: 2;
+    }
+
+    .product-image {
+        width: 100%;
+        height: 210px;
+        object-fit: cover;
+        display: block;
+        background: #eee;
+    }
+
+    .card-content {
+        padding: 17px;
+    }
+
+    .card h3 {
+        font-size: 17px;
+        line-height: 1.4;
+        min-height: 48px;
+    }
+
+    .rating {
+        margin: 9px 0;
+        color: #f5a623;
+        font-size: 14px;
+    }
+
+    .rating span {
+        color: #666;
+        margin-left: 4px;
+    }
+
+    .price-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .price {
+        color: #b12704;
+        font-size: 21px;
+        font-weight: bold;
+    }
+
+    .old-price {
+        color: #777;
+        text-decoration: line-through;
+        font-size: 14px;
+    }
+
+    .saving {
+        color: #007600;
+        font-size: 13px;
+        margin-top: 6px;
+    }
+
+    .delivery {
+        color: #007185;
+        font-size: 13px;
+        margin-top: 8px;
+    }
+
+    .buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 14px;
+    }
+
+    .btn {
+        border: none;
+        padding: 10px 7px;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 13px;
+    }
+
+    .add-btn {
+        background: #ffd814;
+    }
+
+    .buy-btn {
+        background: #ff9900;
+    }
+
+    .btn:hover {
+        filter: brightness(0.95);
+    }
+
+    /* INFO SECTION */
+    .info-section {
+        background: white;
+        margin-top: 45px;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    }
+
+    .info-section h2 {
+        margin-bottom: 15px;
+    }
+
+    .info-section p {
+        color: #555;
+        line-height: 1.7;
+    }
+
+    .features {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-top: 25px;
+    }
+
+    .feature {
+        background: #f7f7f7;
+        padding: 18px;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .feature-icon {
+        font-size: 30px;
+        margin-bottom: 8px;
+    }
+
+    .feature h3 {
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+
+    .feature p {
+        font-size: 13px;
+    }
+
+    /* FOOTER */
+    footer {
+        background: #131921;
+        color: white;
+        margin-top: 55px;
+        padding: 40px 6%;
+    }
+
+    .footer-grid {
+        max-width: 1200px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+    }
+
+    footer h3 {
+        color: #ff9900;
+        margin-bottom: 13px;
+    }
+
+    footer a {
+        color: #ddd;
+        text-decoration: none;
+        display: block;
+        margin: 8px 0;
+        font-size: 14px;
+    }
+
+    footer a:hover {
+        color: white;
+    }
+
+    .copyright {
+        text-align: center;
+        border-top: 1px solid #394553;
+        margin-top: 30px;
+        padding-top: 20px;
+        color: #aaa;
+        font-size: 13px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1000px) {
+        .products {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .categories {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .features {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .footer-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 700px) {
+        header {
+            padding: 14px 4%;
+        }
+
+        .search-box {
+            order: 3;
+            flex-basis: 100%;
+        }
+
+        nav {
+            gap: 14px;
+            padding: 12px 4%;
+        }
+
+        nav a {
+            font-size: 13px;
+        }
+
+        .hero {
+            padding: 35px 5%;
+            min-height: 280px;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+        }
+
+        .hero p {
+            font-size: 15px;
+        }
+
+        .products {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .categories {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .product-image {
+            height: 170px;
+        }
+
+        .card-content {
+            padding: 13px;
+        }
+
+        .buttons {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 450px) {
+        .products {
+            grid-template-columns: 1fr;
+        }
+
+        .categories {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .features,
+        .footer-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .logo {
+            font-size: 24px;
+        }
+
+        .hero h1 {
+            font-size: 28px;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<header>
+
+```
+<div class="logo">NOVA MART</div>
+
+<div class="search-box">
+    <input
+        type="search"
+        id="searchInput"
+        placeholder="Search Home & Kitchen products..."
+        onkeydown="handleSearch(event)"
+    >
+    <button onclick="searchProducts()">🔍</button>
+</div>
+
+<a href="cart.html" class="cart-link">
+    🛒 Cart
+    <span class="cart-count" id="cartCount">0</span>
+</a>
+```
+
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="deals.html">Today's Deals</a>
+    <a href="best-sellers.html">Best Sellers</a>
+    <a href="new-arrivals.html">New Arrivals</a>
+    <a href="electronics.html">Electronics</a>
+    <a href="fashion.html">Fashion</a>
+    <a href="home-kitchen.html" class="active">Home & Kitchen</a>
+    <a href="beauty.html">Beauty</a>
+    <a href="sports.html">Sports</a>
+    <a href="seller.html">Sell on NOVA MART</a>
+</nav>
+
+<section class="hero">
+
+```
+<div class="hero-content">
+
+    <h1>
+        Make Your Home
+        <span>Better</span>
+    </h1>
+
+    <p>
+        Discover practical kitchen essentials, home organization
+        products, dining accessories, cleaning supplies and more
+        for your everyday lifestyle.
+    </p>
+
+    <a href="#products" class="hero-button">
+        Shop Home & Kitchen
+    </a>
+
+</div>
+```
+
+</section>
+
+<div class="container">
+
+```
+<div class="section-heading">
+    <div>
+        <h2>Shop Home & Kitchen</h2>
+        <p>Everything you need for a comfortable and organized home.</p>
+    </div>
+</div>
+
+<div class="categories">
+
+    <a href="#products" class="category">
+        <div class="category-icon">🍳</div>
+        <h3>Cookware</h3>
+    </a>
+
+    <a href="#products" class="category">
+        <div class="category-icon">☕</div>
+        <h3>Kitchen Appliances</h3>
+    </a>
+
+    <a href="#products" class="category">
+        <div class="category-icon">🛏️</div>
+        <h3>Bedding</h3>
+    </a>
+
+    <a href="#products" class="category">
+        <div class="category-icon">🧹</div>
+        <h3>Cleaning</h3>
+    </a>
+
+    <a href="#products" class="category">
+        <div class="category-icon">🏠</div>
+        <h3>Home Essentials</h3>
+    </a>
+
+</div>
+
+<div class="section-heading" id="products">
+
+    <div>
+        <h2>Featured Home & Kitchen Products</h2>
+        <p>Popular everyday essentials available on NOVA MART.</p>
+    </div>
+
+</div>
+
+<div class="products">
+
+    <!-- PRODUCT 1 -->
+    <div class="card">
+
+        <div class="badge">20% OFF</div>
+
+        <img
+            class="product-image"
+            src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=85"
+            alt="Non-stick cookware set"
+        >
+
+        <div class="card-content">
+
+            <h3>Premium Non-Stick Cookware Set</h3>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐ <span>4.7 (186)</span>
+            </div>
+
+            <div class="price-row">
+                <div class="price">Rs. 6,499</div>
+                <div class="old-price">Rs. 8,099</div>
+            </div>
+
+            <div class="saving">Save Rs. 1,600</div>
+
+            <div class="delivery">✓ Free Delivery</div>
+
+            <div class="buttons">
+                <button class="btn add-btn"
+                    onclick="addToCart('Premium Non-Stick Cookware Set',6499)">
+                    Add to Cart
+                </button>
+
+                <button class="btn buy-btn"
+                    onclick="buyNow('Premium Non-Stick Cookware Set',6499)">
+                    Buy Now
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- PRODUCT 2 -->
+    <div class="card">
+
+        <div class="badge">25% OFF</div>
+
+        <img
+            class="product-image"
+            src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=85"
+            alt="Coffee maker"
+        >
+
+        <div class="card-content">
+
+            <h3>Automatic Coffee & Tea Maker</h3>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐ <span>4.6 (124)</span>
+            </div>
+
+            <div class="price-row">
+                <div class="price">Rs. 8,999</div>
+                <div class="old-price">Rs. 11,999</div>
+            </div>
+
+            <div class="saving">Save Rs. 3,000</div>
+
+            <div class="delivery">✓ Free Delivery</div>
+
+            <div class="buttons">
+                <button class="btn add-btn"
+                    onclick="addToCart('Automatic Coffee & Tea Maker',8999)">
+                    Add to Cart
+                </button>
+
+                <button class="btn buy-btn"
+                    onclick="buyNow('Automatic Coffee & Tea Maker',8999)">
+                    Buy Now
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- PRODUCT 3 -->
+    <div class="card">
+
+        <div class="badge">18% OFF</div>
+
+        <img
+            class="product-image"
+            src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=800&q=85"
+            alt="Bedding set"
+        >
+
+        <div class="card-content">
+
+            <h3>Premium Cotton Bedding Set</h3>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐ <span>4.8 (203)</span>
+            </div>
+
+            <div class="price-row">
+                <div class="price">Rs. 5,499</div>
+                <div class="old-price">Rs. 6,699</div>
+            </div>
+
+            <div class="saving">Save Rs. 1,200</div>
+
+            <div class="delivery">✓ Free Delivery</div>
+
+            <div class="buttons">
+                <button class="btn add-btn"
+                    onclick="addToCart('Premium Cotton Bedding Set',5499)">
+                    Add to Cart
+                </button>
+
+                <button class="btn buy-btn"
+                    onclick="buyNow('Premium Cotton Bedding Set',5499)">
+                    Buy Now
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- PRODUCT 4 -->
+    <div class="card">
+
+        <div class="badge">22% OFF</div>
+
+        <img
+            class="product-image"
+            src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=800&q=85"
+            alt="Cleaning products"
+        >
+
+        <div class="card-content">
+
+            <h3>Complete Home Cleaning Kit</h3>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐ <span>4.5 (97)</span>
+            </div>
+
+            <div class="price-row">
+                <div class="price">Rs. 2,799</div>
+                <div class="old-price">Rs. 3,599</div>
+            </div>
+
+            <div class="saving">Save Rs. 800</div>
+
+            <div class="delivery">✓ Fast Delivery</div>
+
+            <div class="buttons">
+                <button class="btn add-btn"
+                    onclick="addToCart('Complete Home Cleaning Kit',2799)">
+                    Add to Cart
+                </button>
+
+                <button class="btn buy-btn"
+                    onclick="buyNow('Complete Home Cleaning Kit',2799)">
+                    Buy Now
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- PRODUCT 5 -->
+    <div class="card">
+
+        <div class="badge">15% OFF</div>
+
+        <img
+            class="product-image"
+            src="https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=800&q=85"
+            alt="Kitchen blender"
+        >
+
+        <div class="card-content">
+
+            <h3>Multi-Speed Kitchen Blender</h3>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐ <span>4.6 (156)</span>
+            </div>
+
+            <div class="price-row">
+                <div class="price">Rs. 5,499</div>
+                <div class="old-price">Rs. 6,499</div>
+            </div>
+
+            <div class="saving">Save Rs. 1,000</div>
+
+            <div class="delivery">✓ Free Delivery</div>
+
+            <div class="buttons">
+                <button class="btn add-btn"
+                    onclick="addToCart('Multi-Speed Kitchen Blender',5499)">
+                    Add to Cart
+                </button>
+
+                <button class="btn buy-btn"
+                    onclick="buyNow('Multi-Speed Kitchen Blender',5499)">
+                    Buy Now
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- PRODUCT 6 -->
+    <div class="card">
+
+        <div class="badge">30% OFF</div>
+
+        <img
+            class="product-image"
+            src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=85"
+            alt="Home storage organizer"
+        >
+
+        <div class="card-content">
+
+            <h3>Modern Home Storage Organizer</h3>
+
+            <div class="rating">
+                ⭐⭐⭐⭐☆ <span>4.4 (88)</span>
+            </div>
+
+            <div class="price-row">
+                <div class="price">Rs. 1,999</div>
+                <div class="old-price">Rs. 2,849</div>
+            </div>
+
+            <div class="saving">Save Rs. 850</div>
+
+            <div class="delivery">✓ Fast Delivery</div>
+
+            <div class="buttons">
+                <button class="btn add-btn"
+                    onclick="addToCart('Modern Home Storage Organizer',1999)">
+                    Add to Cart
+                </button>
+
+                <button class="btn buy-btn"
+                    onclick="buyNow('Modern Home Storage Organizer',1999)">
+                    Buy Now
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- PRODUCT 7 -->
+    <div class="card">
+
+        <div class="badge">20% OFF</div>
+
+        <img
+            class="product-image"
+            src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=800&q=85"
+            alt="Dining table accessories"
+        >
+
+        <div class="card-content">
+
+            <h3>Elegant Dining Table Set</h3>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐ <span>4.7 (112)</span>
+            </div>
+
+            <div class="price-row">
+                <div class="price">Rs. 3,999</div>
+                <div class="old-price">Rs. 4,999</div>
+            </div>
+
+            <div class="saving">Save Rs. 1,000</div>
+
+            <div class="delivery">✓ Free Delivery</div>
+
+            <div class="buttons">
+                <button class="btn add-btn"
+                    onclick="addToCart('Elegant Dining Table Set',3999)">
+                    Add to Cart
+                </button>
+
+                <button class="btn buy-btn"
+                    onclick="buyNow('Elegant Dining Table Set',3999)">
+                    Buy Now
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- PRODUCT 8 -->
+    <div class="card">
+
+        <div class="badge">24% OFF</div>
+
+        <img
+            class="product-image"
+            src="https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&w=800&q=85"
+            alt="Kitchen storage containers"
+        >
+
+        <div class="card-content">
+
+            <h3>Airtight Kitchen Storage Container Set</h3>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐ <span>4.8 (241)</span>
+            </div>
+
+            <div class="price-row">
+                <div class="price">Rs. 2,499</div>
+                <div class="old-price">Rs. 3,299</div>
+            </div>
+
+            <div class="saving">Save Rs. 800</div>
+
+            <div class="delivery">✓ Free Delivery</div>
+
+            <div class="buttons">
+                <button class="btn add-btn"
+                    onclick="addToCart('Airtight Kitchen Storage Container Set',2499)">
+                    Add to Cart
+                </button>
+
+                <button class="btn buy-btn"
+                    onclick="buyNow('Airtight Kitchen Storage Container Set',2499)">
+                    Buy Now
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="info-section">
+
+    <h2>Why Shop Home & Kitchen at NOVA MART?</h2>
+
+    <p>
+        Explore everyday products designed to make cooking, cleaning,
+        organizing and relaxing at home easier. This category contains
+        catalog-style products for your NOVA MART storefront.
+    </p>
+
+    <div class="features">
+
+        <div class="feature">
+            <div class="feature-icon">🚚</div>
+            <h3>Fast Delivery</h3>
+            <p>Convenient delivery options.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🔒</div>
+            <h3>Secure Checkout</h3>
+            <p>Protected checkout experience.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">💳</div>
+            <h3>Easy Payments</h3>
+            <p>Multiple payment options.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">📦</div>
+            <h3>Quality Selection</h3>
+            <p>Useful products for everyday life.</p>
+        </div>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+<footer>
+
+```
+<div class="footer-grid">
+
+    <div>
+        <h3>NOVA MART</h3>
+        <a href="index.html">About NOVA MART</a>
+        <a href="seller.html">Sell on NOVA MART</a>
+        <a href="#">Careers</a>
+    </div>
+
+    <div>
+        <h3>Customer Service</h3>
+        <a href="cart.html">Your Cart</a>
+        <a href="checkout.html">Checkout</a>
+        <a href="#">Help Center</a>
+    </div>
+
+    <div>
+        <h3>Categories</h3>
+        <a href="electronics.html">Electronics</a>
+        <a href="fashion.html">Fashion</a>
+        <a href="beauty.html">Beauty</a>
+        <a href="sports.html">Sports</a>
+    </div>
+
+    <div>
+        <h3>Home & Kitchen</h3>
+        <a href="#products">Cookware</a>
+        <a href="#products">Appliances</a>
+        <a href="#products">Bedding</a>
+        <a href="#products">Cleaning</a>
+    </div>
+
+</div>
+
+<div class="copyright">
+    © 2026 NOVA MART. All Rights Reserved.
+</div>
+```
+
+</footer>
+
+<script>
+
+    function getCart() {
+        try {
+            return JSON.parse(localStorage.getItem("novaMartCart")) || [];
+        } catch (error) {
+            return [];
+        }
+    }
+
+    function saveCart(cart) {
+        localStorage.setItem(
+            "novaMartCart",
+            JSON.stringify(cart)
+        );
+
+        updateCartCount();
+    }
+
+    function addToCart(name, price) {
+
+        const cart = getCart();
+
+        const existingItem = cart.find(
+            item => item.name === name
+        );
+
+        if (existingItem) {
+            existingItem.quantity =
+                Number(existingItem.quantity || 1) + 1;
+        } else {
+            cart.push({
+                id: Date.now(),
+                name: name,
+                price: Number(price),
+                quantity: 1
+            });
+        }
+
+        saveCart(cart);
+
+        alert(name + " added to your cart!");
+    }
+
+    function buyNow(name, price) {
+
+        const cart = getCart();
+
+        const existingItem = cart.find(
+            item => item.name === name
+        );
+
+        if (existingItem) {
+            existingItem.quantity =
+                Number(existingItem.quantity || 1) + 1;
+        } else {
+            cart.push({
+                id: Date.now(),
+                name: name,
+                price: Number(price),
+                quantity: 1
+            });
+        }
+
+        saveCart(cart);
+
+        window.location.href = "checkout.html";
+    }
+
+    function updateCartCount() {
+
+        const cart = getCart();
+
+        const count = cart.reduce(
+            (total, item) =>
+                total + Number(item.quantity || 1),
+            0
+        );
+
+        const cartCount =
+            document.getElementById("cartCount");
+
+        if (cartCount) {
+            cartCount.textContent = count;
+        }
+    }
+
+    function searchProducts() {
+
+        const input =
+            document.getElementById("searchInput");
+
+        const query =
+            input.value.trim();
+
+        if (!query) {
+            alert("Please enter a product name.");
+            return;
+        }
+
+        window.location.href =
+            "index.html?search=" +
+            encodeURIComponent(query);
+    }
+
+    function handleSearch(event) {
+
+        if (event.key === "Enter") {
+            searchProducts();
+        }
+    }
+
+    updateCartCount();
+
+</script>
+
+</body>
+</html>

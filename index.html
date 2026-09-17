@@ -1,0 +1,2867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NOVA MART | Online Shopping</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f5f5;
+            color: #222;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        /* =========================
+           TOP ANNOUNCEMENT
+        ========================= */
+
+        .announcement {
+            background: #131921;
+            color: white;
+            text-align: center;
+            padding: 9px;
+            font-size: 14px;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+            background: #232f3e;
+            color: white;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            white-space: nowrap;
+            color: #ff9900;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        .location-btn,
+        .header-btn {
+            border: 0;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            padding: 7px;
+            border-radius: 4px;
+        }
+
+        .location-btn:hover,
+        .header-btn:hover {
+            background: rgba(255,255,255,.12);
+        }
+
+        .location-small {
+            display: block;
+            font-size: 11px;
+            color: #ddd;
+        }
+
+        .location-main {
+            display: block;
+            font-weight: bold;
+        }
+
+        /* SEARCH */
+
+        .search-area {
+            flex: 1;
+            display: flex;
+            max-width: 850px;
+        }
+
+        .search-category {
+            border: none;
+            background: #eee;
+            padding: 0 10px;
+            border-radius: 5px 0 0 5px;
+        }
+
+        #searchInput {
+            flex: 1;
+            min-width: 100px;
+            padding: 12px;
+            border: none;
+            outline: none;
+        }
+
+        .search-btn {
+            width: 50px;
+            border: none;
+            background: #febd69;
+            cursor: pointer;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .search-btn:hover {
+            background: #f3a847;
+        }
+
+        .account-area,
+        .orders-area {
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .header-label {
+            font-size: 12px;
+            display: block;
+        }
+
+        .header-main {
+            font-weight: bold;
+            display: block;
+        }
+
+        .cart-button {
+            background: transparent;
+            color: white;
+            border: 0;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        #cartCount {
+            color: #ff9900;
+            font-size: 18px;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            background: #37475a;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 7px 15px;
+            overflow-x: auto;
+        }
+
+        .navbar a,
+        .menu-btn {
+            color: white;
+            background: transparent;
+            border: none;
+            padding: 9px 12px;
+            cursor: pointer;
+            white-space: nowrap;
+            border-radius: 3px;
+        }
+
+        .navbar a:hover,
+        .menu-btn:hover {
+            background: rgba(255,255,255,.13);
+        }
+
+        /* =========================
+           SEARCH SUGGESTIONS
+        ========================= */
+
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            color: #222;
+            border: 1px solid #ddd;
+            display: none;
+            z-index: 2000;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .search-suggestions div {
+            padding: 12px;
+            cursor: pointer;
+        }
+
+        .search-suggestions div:hover {
+            background: #f3f3f3;
+        }
+
+        /* =========================
+           MEGA MENU
+        ========================= */
+
+        .mega-menu {
+            display: none;
+            position: absolute;
+            left: 15px;
+            top: 112px;
+            width: 90%;
+            max-width: 900px;
+            background: white;
+            color: #222;
+            padding: 25px;
+            box-shadow: 0 5px 25px rgba(0,0,0,.25);
+            z-index: 1500;
+            border-radius: 6px;
+        }
+
+        .mega-menu.show {
+            display: block;
+        }
+
+        .mega-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .mega-column h3 {
+            margin-top: 0;
+            color: #131921;
+        }
+
+        .mega-column a {
+            display: block;
+            color: #555;
+            padding: 6px 0;
+        }
+
+        .mega-column a:hover {
+            color: #e47911;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 390px;
+            background:
+                linear-gradient(rgba(0,0,0,.48), rgba(0,0,0,.55)),
+                linear-gradient(135deg, #0758a8, #0a78c9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(38px, 7vw, 72px);
+            margin: 0 0 15px;
+            font-weight: 900;
+        }
+
+        .hero-content p {
+            font-size: 22px;
+            margin: 10px 0;
+        }
+
+        .hero-buttons {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn,
+        .secondary-btn {
+            padding: 13px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .primary-btn {
+            background: #ff9900;
+            color: #111;
+        }
+
+        .secondary-btn {
+            background: white;
+            color: #111;
+        }
+
+        /* =========================
+           SERVICES
+        ========================= */
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: white;
+            margin: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,.08);
+        }
+
+        .service {
+            padding: 22px;
+            text-align: center;
+            border-right: 1px solid #eee;
+        }
+
+        .service:last-child {
+            border-right: none;
+        }
+
+        .service-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .service h3 {
+            margin: 5px 0;
+        }
+
+        .service p {
+            color: #666;
+            margin: 5px 0;
+        }
+
+        /* =========================
+           GENERAL SECTION
+        ========================= */
+
+        .section {
+            margin: 20px;
+            padding: 25px;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 26px;
+        }
+
+        .view-all {
+            color: #007185;
+            font-weight: bold;
+        }
+
+        /* =========================
+           CATEGORY GRID
+        ========================= */
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+        }
+
+        .category-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0,0,0,.12);
+        }
+
+        .category-icon {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        .category-card h3 {
+            margin: 5px 0;
+        }
+
+        /* =========================
+           PRODUCT GRID
+        ========================= */
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 18px;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 14px;
+            background: white;
+            transition: .2s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 18px rgba(0,0,0,.12);
+        }
+
+        .product-image {
+            height: 170px;
+            background: #f7f7f7;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 75px;
+            margin-bottom: 12px;
+        }
+
+        .product-card h3 {
+            margin: 8px 0;
+            font-size: 16px;
+        }
+
+        .rating {
+            color: #f59e0b;
+            font-size: 14px;
+        }
+
+        .price {
+            font-size: 21px;
+            font-weight: bold;
+            margin: 7px 0;
+        }
+
+        .old-price {
+            color: #777;
+            text-decoration: line-through;
+            font-size: 13px;
+            margin-left: 5px;
+        }
+
+        .discount {
+            color: #b12704;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .add-cart-btn {
+            width: 100%;
+            padding: 10px;
+            background: #ffd814;
+            border: 1px solid #fcd200;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .add-cart-btn:hover {
+            background: #f7ca00;
+        }
+
+        .quick-view-btn {
+            width: 100%;
+            margin-top: 8px;
+            padding: 8px;
+            border: 1px solid #aaa;
+            border-radius: 20px;
+            background: white;
+            cursor: pointer;
+        }
+
+        /* =========================
+           SALE BANNER
+        ========================= */
+
+        .sale-banner {
+            background: linear-gradient(135deg, #b12704, #e47911);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .sale-banner h2 {
+            margin: 0;
+            font-size: 35px;
+        }
+
+        .sale-banner p {
+            font-size: 18px;
+        }
+
+        /* =========================
+           FILTERS
+        ========================= */
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .filter-btn {
+            padding: 8px 15px;
+            border: 1px solid #bbb;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: #232f3e;
+            color: white;
+        }
+
+        /* =========================
+           COUPONS
+        ========================= */
+
+        .coupon-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .coupon {
+            border: 2px dashed #ff9900;
+            padding: 20px;
+            border-radius: 8px;
+            background: #fffaf0;
+        }
+
+        .coupon h3 {
+            margin-top: 0;
+        }
+
+        .coupon-code {
+            display: inline-block;
+            background: #232f3e;
+            color: white;
+            padding: 7px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        /* =========================
+           SELLER PROMO
+        ========================= */
+
+        .seller-promo {
+            background: #eef6ff;
+            text-align: center;
+            padding: 35px;
+            border-radius: 8px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #131a22;
+            color: white;
+            margin-top: 30px;
+        }
+
+        .footer-top {
+            background: #37475a;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            padding: 45px 7%;
+        }
+
+        .footer-column h3 {
+            margin-top: 0;
+        }
+
+        .footer-column a {
+            display: block;
+            color: #ddd;
+            margin: 9px 0;
+            font-size: 14px;
+        }
+
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            text-align: center;
+            padding: 20px;
+            color: #ccc;
+        }
+
+        /* =========================
+           CART SIDEBAR
+        ========================= */
+
+        .cart-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.55);
+            z-index: 5000;
+        }
+
+        .cart-overlay.show {
+            display: block;
+        }
+
+        .cart-sidebar {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: min(450px, 95%);
+            background: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-header {
+            padding: 18px;
+            background: #232f3e;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h2 {
+            margin: 0;
+        }
+
+        .close-btn {
+            border: 0;
+            background: transparent;
+            color: white;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 12px;
+            border-bottom: 1px solid #ddd;
+            padding: 12px 0;
+        }
+
+        .cart-item-image {
+            width: 65px;
+            height: 65px;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-info h4 {
+            margin: 0 0 5px;
+        }
+
+        .cart-remove {
+            border: none;
+            background: transparent;
+            color: #c00;
+            cursor: pointer;
+        }
+
+        .cart-summary {
+            border-top: 1px solid #ddd;
+            padding: 18px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            border: none;
+            background: #ff9900;
+            padding: 13px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .view-cart-btn {
+            display: block;
+            text-align: center;
+            background: #eee;
+            padding: 11px;
+            border-radius: 5px;
+            margin-top: 8px;
+        }
+
+        /* =========================
+           MODALS
+        ========================= */
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.65);
+            z-index: 6000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            width: min(700px, 100%);
+            max-height: 90vh;
+            overflow-y: auto;
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 28px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .location-form input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #bbb;
+            border-radius: 5px;
+        }
+
+        .location-form button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: #ff9900;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* =========================
+           MOBILE BOTTOM NAV
+        ========================= */
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #ddd;
+            z-index: 4000;
+            justify-content: space-around;
+            padding: 8px 4px;
+        }
+
+        .mobile-nav button {
+            border: none;
+            background: transparent;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .mobile-nav span {
+            display: block;
+            font-size: 20px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1100px) {
+            .product-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 850px) {
+            .header {
+                flex-wrap: wrap;
+            }
+
+            .search-area {
+                order: 10;
+                flex-basis: 100%;
+                max-width: none;
+            }
+
+            .services {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .mega-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding-bottom: 65px;
+            }
+
+            .announcement {
+                font-size: 12px;
+            }
+
+            .header {
+                padding: 10px;
+                gap: 8px;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            .location-btn,
+            .orders-area {
+                display: none;
+            }
+
+            .header-btn {
+                font-size: 12px;
+            }
+
+            .navbar {
+                gap: 0;
+            }
+
+            .navbar a:nth-of-type(n+5) {
+                display: none;
+            }
+
+            .hero {
+                min-height: 330px;
+            }
+
+            .hero-content h1 {
+                font-size: 42px;
+            }
+
+            .hero-content p {
+                font-size: 17px;
+            }
+
+            .section {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            .services {
+                margin: 10px;
+            }
+
+            .service {
+                padding: 15px 8px;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .product-image {
+                height: 130px;
+                font-size: 55px;
+            }
+
+            .coupon-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                padding: 30px 20px;
+            }
+
+            .mobile-nav {
+                display: flex;
+            }
+
+            .mega-menu {
+                left: 5px;
+                width: calc(100% - 10px);
+                top: 105px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         ANNOUNCEMENT
+    ========================== -->
+
+    <div class="announcement">
+        🚚 Free Delivery on Orders Above Rs. 3,000 &nbsp; | &nbsp;
+        🔥 Mega Deals Every Day at NOVA MART
+    </div>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="header">
+
+        <a href="index.html" class="logo">
+            NOVA<span>MART</span>
+        </a>
+
+        <button class="location-btn" type="button" onclick="openLocationModal()">
+            <span class="location-small">Deliver to</span>
+            <span class="location-main">📍 Pakistan</span>
+        </button>
+
+        <div class="search-area" style="position:relative;">
+
+            <select class="search-category" id="searchCategory">
+                <option value="all">All</option>
+                <option value="electronics">Electronics</option>
+                <option value="fashion">Fashion</option>
+                <option value="home">Home & Kitchen</option>
+                <option value="beauty">Beauty</option>
+                <option value="sports">Sports</option>
+            </select>
+
+            <input
+                id="searchInput"
+                type="search"
+                placeholder="Search products..."
+                autocomplete="off"
+                oninput="showSearchSuggestions()"
+                onkeydown="handleSearchKey(event)"
+            >
+
+            <button
+                class="search-btn"
+                type="button"
+                onclick="performSearch()">
+                🔍
+            </button>
+
+            <div
+                id="searchSuggestions"
+                class="search-suggestions">
+            </div>
+
+        </div>
+
+        <button class="header-btn" type="button" onclick="toggleLanguage()">
+            🌐
+            <span class="header-label">Language</span>
+            <span class="header-main">EN</span>
+        </button>
+
+        <div class="account-area">
+            <button
+                class="header-btn"
+                type="button"
+                onclick="toggleAccountMenu()">
+
+                <span class="header-label">Hello, Sign in</span>
+                <span class="header-main">Account ▾</span>
+            </button>
+
+            <div
+                id="accountMenu"
+                class="mega-menu"
+                style="display:none; right:0; left:auto; top:65px; width:260px;">
+
+                <h3>Your Account</h3>
+
+                <a href="login.html">Sign In</a>
+                <a href="register.html">Create Account</a>
+                <a href="account.html">My Account</a>
+                <a href="orders.html">My Orders</a>
+                <a href="wishlist.html">Wishlist</a>
+                <a href="addresses.html">Addresses</a>
+                <a href="payments.html">Payment Methods</a>
+                <a href="buy-again.html">Buy Again</a>
+                <a href="recently-viewed.html">Recently Viewed</a>
+                <a href="deals.html">My Deals</a>
+                <a href="coupons.html">Coupons</a>
+            </div>
+        </div>
+
+        <a href="orders.html" class="orders-area header-btn">
+            <span class="header-label">Returns</span>
+            <span class="header-main">& Orders</span>
+        </a>
+
+        <button
+            class="cart-button"
+            type="button"
+            onclick="openCart()">
+
+            🛒 Cart
+            <span id="cartCount">0</span>
+        </button>
+
+    </header>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav class="navbar">
+
+        <button
+            class="menu-btn"
+            type="button"
+            onclick="toggleMegaMenu()">
+            ☰ All
+        </button>
+
+        <a href="deals.html">Today's Deals</a>
+        <a href="best-sellers.html">Best Sellers</a>
+        <a href="new-arrivals.html">New Arrivals</a>
+        <a href="electronics.html">Electronics</a>
+        <a href="fashion.html">Fashion</a>
+        <a href="home-kitchen.html">Home & Kitchen</a>
+        <a href="beauty.html">Beauty</a>
+        <a href="sports.html">Sports</a>
+        <a href="seller.html">Sell on NOVA MART</a>
+
+    </nav>
+
+    <!-- =========================
+         MEGA MENU
+    ========================== -->
+
+    <div id="megaMenu" class="mega-menu">
+
+        <div class="mega-grid">
+
+            <div class="mega-column">
+                <h3>Electronics</h3>
+                <a href="electronics.html">Mobiles</a>
+                <a href="electronics.html">Laptops</a>
+                <a href="electronics.html">Headphones</a>
+                <a href="electronics.html">Smart Watches</a>
+                <a href="electronics.html">Cameras</a>
+            </div>
+
+            <div class="mega-column">
+                <h3>Fashion</h3>
+                <a href="fashion.html">Men's Clothing</a>
+                <a href="fashion.html">Women's Clothing</a>
+                <a href="fashion.html">Shoes</a>
+                <a href="fashion.html">Bags</a>
+                <a href="fashion.html">Watches</a>
+            </div>
+
+            <div class="mega-column">
+                <h3>Home</h3>
+                <a href="home-kitchen.html">Kitchen</a>
+                <a href="home-kitchen.html">Furniture</a>
+                <a href="home-kitchen.html">Decor</a>
+                <a href="home-kitchen.html">Lighting</a>
+                <a href="home-kitchen.html">Appliances</a>
+            </div>
+
+            <div class="mega-column">
+                <h3>More</h3>
+                <a href="beauty.html">Beauty</a>
+                <a href="sports.html">Sports</a>
+                <a href="deals.html">Today's Deals</a>
+                <a href="best-sellers.html">Best Sellers</a>
+                <a href="new-arrivals.html">New Arrivals</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>Welcome to NOVA MART</h1>
+
+            <p>Everything you need. All in one place.</p>
+
+            <p>
+                Shop electronics, fashion, home products,
+                beauty, sports and more.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button
+                    class="primary-btn"
+                    type="button"
+                    onclick="document.getElementById('products').scrollIntoView()">
+                    Shop Now
+                </button>
+
+                <a
+                    href="deals.html"
+                    class="secondary-btn">
+                    View Deals
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+         SERVICES
+    ========================== -->
+
+    <section class="services">
+
+        <div class="service">
+            <div class="service-icon">🚚</div>
+            <h3>Fast Delivery</h3>
+            <p>Quick delivery across Pakistan</p>
+        </div>
+
+        <div class="service">
+            <div class="service-icon">🔒</div>
+            <h3>Secure Shopping</h3>
+            <p>Your information is protected</p>
+        </div>
+
+        <div class="service">
+            <div class="service-icon">💳</div>
+            <h3>Easy Payments</h3>
+            <p>Multiple payment options</p>
+        </div>
+
+        <div class="service">
+            <div class="service-icon">📞</div>
+            <h3>Customer Support</h3>
+            <p>We're here to help</p>
+        </div>
+
+    </section>
+
+    <!-- =========================
+         SHOP BY CATEGORY
+    ========================== -->
+
+    <section class="section">
+
+        <div class="section-header">
+            <h2>Shop by Category</h2>
+            <a href="index.html" class="view-all">View All</a>
+        </div>
+
+        <div class="category-grid">
+
+            <div
+                class="category-card"
+                onclick="filterCategory('electronics')">
+                <div class="category-icon">📱</div>
+                <h3>Electronics</h3>
+            </div>
+
+            <div
+                class="category-card"
+                onclick="filterCategory('fashion')">
+                <div class="category-icon">👕</div>
+                <h3>Fashion</h3>
+            </div>
+
+            <div
+                class="category-card"
+                onclick="filterCategory('home')">
+                <div class="category-icon">🏠</div>
+                <h3>Home & Kitchen</h3>
+            </div>
+
+            <div
+                class="category-card"
+                onclick="filterCategory('beauty')">
+                <div class="category-icon">💄</div>
+                <h3>Beauty</h3>
+            </div>
+
+            <div
+                class="category-card"
+                onclick="filterCategory('sports')">
+                <div class="category-icon">⚽</div>
+                <h3>Sports</h3>
+            </div>
+
+            <div
+                class="category-card"
+                onclick="filterCategory('all')">
+                <div class="category-icon">🛍️</div>
+                <h3>All Products</h3>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+         TODAY'S DEALS
+    ========================== -->
+
+    <section class="section">
+
+        <div class="section-header">
+            <h2>🔥 Today's Deals</h2>
+            <a href="deals.html" class="view-all">See all deals</a>
+        </div>
+
+        <div class="product-grid">
+
+            <div class="product-card" data-category="electronics">
+
+                <div class="product-image">📱</div>
+
+                <h3>Premium Smartphone</h3>
+
+                <div class="rating">
+                    ★★★★★ (125)
+                </div>
+
+                <div class="price">
+                    Rs. 49,999
+                    <span class="old-price">Rs. 59,999</span>
+                </div>
+
+                <div class="discount">
+                    17% OFF
+                </div>
+
+                <button
+                    class="add-cart-btn"
+                    type="button"
+                    onclick="addProductToCart(
+                        'Premium Smartphone',
+                        49999,
+                        '📱'
+                    )">
+                    Add to Cart
+                </button>
+
+                <button
+                    class="quick-view-btn"
+                    type="button"
+                    onclick="quickView(
+                        'Premium Smartphone',
+                        49999,
+                        '📱',
+                        'High-quality smartphone with premium features.'
+                    )">
+                    Quick View
+                </button>
+
+            </div>
+
+            <div class="product-card" data-category="electronics">
+
+                <div class="product-image">🎧</div>
+
+                <h3>Wireless Headphones</h3>
+
+                <div class="rating">
+                    ★★★★☆ (89)
+                </div>
+
+                <div class="price">
+                    Rs. 4,999
+                    <span class="old-price">Rs. 6,999</span>
+                </div>
+
+                <div class="discount">
+                    29% OFF
+                </div>
+
+                <button
+                    class="add-cart-btn"
+                    type="button"
+                    onclick="addProductToCart(
+                        'Wireless Headphones',
+                        4999,
+                        '🎧'
+                    )">
+                    Add to Cart
+                </button>
+
+                <button
+                    class="quick-view-btn"
+                    type="button"
+                    onclick="quickView(
+                        'Wireless Headphones',
+                        4999,
+                        '🎧',
+                        'Comfortable wireless headphones with excellent sound.'
+                    )">
+                    Quick View
+                </button>
+
+            </div>
+
+            <div class="product-card" data-category="fashion">
+
+                <div class="product-image">👟</div>
+
+                <h3>Running Shoes</h3>
+
+                <div class="rating">
+                    ★★★★★ (210)
+                </div>
+
+                <div class="price">
+                    Rs. 3,499
+                    <span class="old-price">Rs. 5,000</span>
+                </div>
+
+                <div class="discount">
+                    30% OFF
+                </div>
+
+                <button
+                    class="add-cart-btn"
+                    type="button"
+                    onclick="addProductToCart(
+                        'Running Shoes',
+                        3499,
+                        '👟'
+                    )">
+                    Add to Cart
+                </button>
+
+                <button
+                    class="quick-view-btn"
+                    type="button"
+                    onclick="quickView(
+                        'Running Shoes',
+                        3499,
+                        '👟',
+                        'Comfortable running shoes for everyday use.'
+                    )">
+                    Quick View
+                </button>
+
+            </div>
+
+            <div class="product-card" data-category="home">
+
+                <div class="product-image">🍳</div>
+
+                <h3>Non-Stick Cookware Set</h3>
+
+                <div class="rating">
+                    ★★★★☆ (64)
+                </div>
+
+                <div class="price">
+                    Rs. 6,999
+                    <span class="old-price">Rs. 8,999</span>
+                </div>
+
+                <div class="discount">
+                    22% OFF
+                </div>
+
+                <button
+                    class="add-cart-btn"
+                    type="button"
+                    onclick="addProductToCart(
+                        'Non-Stick Cookware Set',
+                        6999,
+                        '🍳'
+                    )">
+                    Add to Cart
+                </button>
+
+                <button
+                    class="quick-view-btn"
+                    type="button"
+                    onclick="quickView(
+                        'Non-Stick Cookware Set',
+                        6999,
+                        '🍳',
+                        'Complete non-stick cookware set for your kitchen.'
+                    )">
+                    Quick View
+                </button>
+
+            </div>
+
+            <div class="product-card" data-category="beauty">
+
+                <div class="product-image">💄</div>
+
+                <h3>Beauty Essentials Kit</h3>
+
+                <div class="rating">
+                    ★★★★☆ (102)
+                </div>
+
+                <div class="price">
+                    Rs. 2,499
+                    <span class="old-price">Rs. 3,499</span>
+                </div>
+
+                <div class="discount">
+                    29% OFF
+                </div>
+
+                <button
+                    class="add-cart-btn"
+                    type="button"
+                    onclick="addProductToCart(
+                        'Beauty Essentials Kit',
+                        2499,
+                        '💄'
+                    )">
+                    Add to Cart
+                </button>
+
+                <button
+                    class="quick-view-btn"
+                    type="button"
+                    onclick="quickView(
+                        'Beauty Essentials Kit',
+                        2499,
+                        '💄',
+                        'A useful collection of everyday beauty essentials.'
+                    )">
+                    Quick View
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+         FLASH SALE
+    ========================== -->
+
+    <section class="section">
+
+        <div class="sale-banner">
+
+            <h2>⚡ FLASH SALE</h2>
+
+            <p>
+                Limited-time discounts on selected products.
+            </p>
+
+            <a
+                href="deals.html"
+                class="secondary-btn"
+                style="display:inline-block;">
+                Shop Flash Sale
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+         BEST SELLERS
+    ========================== -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <h2>⭐ Best Sellers</h2>
+
+            <a
+                href="best-sellers.html"
+                class="view-all">
+                See all
+            </a>
+
+        </div>
+
+        <div class="product-grid">
+
+            <div class="product-card" data-category="electronics">
+                <div class="product-image">💻</div>
+                <h3>Business Laptop</h3>
+                <div class="rating">★★★★★ (312)</div>
+                <div class="price">Rs. 89,999</div>
+
+                <button
+                    class="add-cart-btn"
+                    onclick="addProductToCart(
+                        'Business Laptop',
+                        89999,
+                        '💻'
+                    )">
+                    Add to Cart
+                </button>
+            </div>
+
+            <div class="product-card" data-category="electronics">
+                <div class="product-image">⌚</div>
+                <h3>Smart Watch</h3>
+                <div class="rating">★★★★☆ (187)</div>
+                <div class="price">Rs. 7,999</div>
+
+                <button
+                    class="add-cart-btn"
+                    onclick="addProductToCart(
+                        'Smart Watch',
+                        7999,
+                        '⌚'
+                    )">
+                    Add to Cart
+                </button>
+            </div>
+
+            <div class="product-card" data-category="fashion">
+                <div class="product-image">👔</div>
+                <h3>Men's Casual Shirt</h3>
+                <div class="rating">★★★★☆ (94)</div>
+                <div class="price">Rs. 1,999</div>
+
+                <button
+                    class="add-cart-btn"
+                    onclick="addProductToCart(
+                        'Men Casual Shirt',
+                        1999,
+                        '👔'
+                    )">
+                    Add to Cart
+                </button>
+            </div>
+
+            <div class="product-card" data-category="home">
+                <div class="product-image">🛋️</div>
+                <h3>Modern Sofa Cushion</h3>
+                <div class="rating">★★★★☆ (71)</div>
+                <div class="price">Rs. 2,499</div>
+
+                <button
+                    class="add-cart-btn"
+                    onclick="addProductToCart(
+                        'Modern Sofa Cushion',
+                        2499,
+                        '🛋️'
+                    )">
+                    Add to Cart
+                </button>
+            </div>
+
+            <div class="product-card" data-category="sports">
+                <div class="product-image">🏏</div>
+                <h3>Professional Cricket Bat</h3>
+                <div class="rating">★★★★★ (145)</div>
+                <div class="price">Rs. 8,499</div>
+
+                <button
+                    class="add-cart-btn"
+                    onclick="addProductToCart(
+                        'Professional Cricket Bat',
+                        8499,
+                        '🏏'
+                    )">
+                    Add to Cart
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+         NEW ARRIVALS
+    ========================== -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <h2>🆕 New Arrivals</h2>
+
+            <a
+                href="new-arrivals.html"
+                class="view-all">
+                See all
+            </a>
+
+        </div>
+
+        <div class="product-grid">
+
+            <div class="product-card" data-category="electronics">
+                <div class="product-image">🎮</div>
+                <h3>Gaming Controller</h3>
+                <div class="rating">★★★★★</div>
+                <div class="price">Rs. 5,499</div>
+
+                <button
+                    class="add-cart-btn"
+                    onclick="addProductToCart(
+                        'Gaming Controller',
+                        5499,
+                        '🎮'
+                    )">
+                    Add to Cart
+                </button>
+            </div>
+
+            <div class="product-card" data-category="fashion">
+                <div class="product-image">🧥</div>
+                <h3>Premium Jacket</h3>
+                <div class="rating">★★★★☆</div>
+                <div class="price">Rs. 5,999</div>
+
+                <button
+                    class="add-cart-btn"
+                    onclick="addProductToCart(
+                        'Premium Jacket',
+                        5999,
+                        '🧥'
+                    )">
+                    Add to Cart
+                </button>
+            </div>
+
+            <div class="product-card" data-category="beauty">
+                <div class="product-image">🧴</div>
+                <h3>Skincare Collection</h3>
+                <div class="rating">★★★★☆</div>
+                <div class="price">Rs. 3,299</div>
+
+                <button
+                    class="add-cart-btn"
+                    onclick="addProductToCart(
+                        'Skincare Collection',
+                        3299,
+                        '🧴'
+                    )">
+                    Add to Cart
+                </button>
+            </div>
+
+            <div class="product-card" data-category="sports">
+                <div class="product-image">🏋️</div>
+                <h3>Home Workout Kit</h3>
+                <div class="rating">★★★★★</div>
+                <div class="price">Rs. 4,999</div>
+
+                <button
+                    class="add-cart-btn"
+                    onclick="addProductToCart(
+                        'Home Workout Kit',
+                        4999,
+                        '🏋️'
+                    )">
+                    Add to Cart
+                </button>
+            </div>
+
+            <div class="product-card" data-category="home">
+                <div class="product-image">💡</div>
+                <h3>Smart LED Lamp</h3>
+                <div class="rating">★★★★☆</div>
+                <div class="price">Rs. 2,799</div>
+
+                <button
+                    class="add-cart-btn"
+                    onclick="addProductToCart(
+                        'Smart LED Lamp',
+                        2799,
+                        '💡'
+                    )">
+                    Add to Cart
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+         ALL PRODUCTS
+    ========================== -->
+
+    <section class="section" id="products">
+
+        <div class="section-header">
+
+            <h2>🛍️ Popular Products</h2>
+
+            <select
+                id="sortProducts"
+                onchange="sortProducts()"
+                style="padding:9px;border:1px solid #bbb;border-radius:5px;">
+
+                <option value="default">Sort Products</option>
+                <option value="low">Price: Low to High</option>
+                <option value="high">Price: High to Low</option>
+
+            </select>
+
+        </div>
+
+        <div class="filters">
+
+            <button
+                class="filter-btn active"
+                onclick="filterCategory('all')">
+                All
+            </button>
+
+            <button
+                class="filter-btn"
+                onclick="filterCategory('electronics')">
+                Electronics
+            </button>
+
+            <button
+                class="filter-btn"
+                onclick="filterCategory('fashion')">
+                Fashion
+            </button>
+
+            <button
+                class="filter-btn"
+                onclick="filterCategory('home')">
+                Home
+            </button>
+
+            <button
+                class="filter-btn"
+                onclick="filterCategory('beauty')">
+                Beauty
+            </button>
+
+            <button
+                class="filter-btn"
+                onclick="filterCategory('sports')">
+                Sports
+            </button>
+
+        </div>
+
+        <div class="product-grid" id="mainProductGrid">
+
+            <div class="product-card" data-category="electronics" data-price="129999">
+                <div class="product-image">📺</div>
+                <h3>Smart LED TV</h3>
+                <div class="rating">★★★★★ (220)</div>
+                <div class="price">Rs. 129,999</div>
+                <button class="add-cart-btn"
+                    onclick="addProductToCart('Smart LED TV',129999,'📺')">
+                    Add to Cart
+                </button>
+            </div>
+
+            <div class="product-card" data-category="electronics" data-price="15999">
+                <div class="product-image">📷</div>
+                <h3>Digital Camera</h3>
+                <div class="rating">★★★★☆ (81)</div>
+                <div class="price">Rs. 15,999</div>
+                <button class="add-cart-btn"
+                    onclick="addProductToCart('Digital Camera',15999,'📷')">
+                    Add to Cart
+                </button>
+            </div>
+
+            <div class="product-card" data-category="fashion" data-price="2999">
+                <div class="product-image">👗</div>
+                <h3>Women's Dress</h3>
+                <div class="rating">★★★★★ (116)</div>
+                <div class="price">Rs. 2,999</div>
+                <button class="add-cart-btn"
+                    onclick="addProductToCart('Women Dress',2999,'👗')">
+                    Add to Cart
+                </button>
+            </div>
+
+            <div class="product-card" data-category="home" data-price="4499">
+                <div class="product-image">🪑</div>
+                <h3>Modern Chair</h3>
+                <div class="rating">★★★★☆ (54)</div>
+                <div class="price">Rs. 4,499</div>
+                <button class="add-cart-btn"
+                    onclick="addProductToCart('Modern Chair',4499,'🪑')">
+                    Add to Cart
+                </button>
+            </div>
+
+            <div class="product-card" data-category="beauty" data-price="1899">
+                <div class="product-image">💅</div>
+                <h3>Beauty Care Set</h3>
+                <div class="rating">★★★★☆ (72)</div>
+                <div class="price">Rs. 1,899</div>
+                <button class="add-cart-btn"
+                    onclick="addProductToCart('Beauty Care Set',1899,'💅')">
+                    Add to Cart
+                </button>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+         COUPONS
+    ========================== -->
+
+    <section class="section">
+
+        <div class="section-header">
+            <h2>🎟️ Special Coupons</h2>
+            <a href="coupons.html" class="view-all">View All</a>
+        </div>
+
+        <div class="coupon-grid">
+
+            <div class="coupon">
+                <h3>Rs. 500 OFF</h3>
+                <p>On orders above Rs. 5,000</p>
+                <span class="coupon-code">NOVA500</span>
+            </div>
+
+            <div class="coupon">
+                <h3>10% OFF</h3>
+                <p>On selected products</p>
+                <span class="coupon-code">NOVA10</span>
+            </div>
+
+            <div class="coupon">
+                <h3>Free Delivery</h3>
+                <p>On orders above Rs. 3,000</p>
+                <span class="coupon-code">FREESHIP</span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+         SELLER PROMOTION
+    ========================== -->
+
+    <section class="section">
+
+        <div class="seller-promo">
+
+            <h2>🏪 Sell Your Products on NOVA MART</h2>
+
+            <p>
+                Reach more customers and grow your online business.
+            </p>
+
+            <a
+                href="seller.html"
+                class="primary-btn"
+                style="display:inline-block;">
+                Start Selling
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-top">
+            <a href="index.html">Back to top ↑</a>
+        </div>
+
+        <div class="footer-content">
+
+            <div class="footer-column">
+
+                <h3>Get to Know Us</h3>
+
+                <a href="index.html">About NOVA MART</a>
+                <a href="seller.html">Sell on NOVA MART</a>
+                <a href="seller.html">Become a Seller</a>
+
+            </div>
+
+            <div class="footer-column">
+
+                <h3>Make Money With Us</h3>
+
+                <a href="seller.html">Sell Products</a>
+                <a href="seller.html">Advertise Products</a>
+                <a href="seller.html">Seller Center</a>
+
+            </div>
+
+            <div class="footer-column">
+
+                <h3>Customer Service</h3>
+
+                <a href="orders.html">Track Order</a>
+                <a href="account.html">Your Account</a>
+                <a href="addresses.html">Delivery Addresses</a>
+                <a href="payments.html">Payment Methods</a>
+
+            </div>
+
+            <div class="footer-column">
+
+                <h3>Shop With Us</h3>
+
+                <a href="electronics.html">Electronics</a>
+                <a href="fashion.html">Fashion</a>
+                <a href="home-kitchen.html">Home & Kitchen</a>
+                <a href="beauty.html">Beauty</a>
+                <a href="sports.html">Sports</a>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <strong>NOVA MART</strong>
+
+            <p>
+                © 2026 NOVA MART. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+    <!-- =========================
+         CART
+    ========================== -->
+
+    <div
+        id="cartOverlay"
+        class="cart-overlay"
+        onclick="closeCart(event)">
+
+        <aside
+            class="cart-sidebar"
+            onclick="event.stopPropagation()">
+
+            <div class="cart-header">
+
+                <h2>Shopping Cart</h2>
+
+                <button
+                    class="close-btn"
+                    type="button"
+                    onclick="closeCart()">
+                    ×
+                </button>
+
+            </div>
+
+            <div
+                id="cartItems"
+                class="cart-items">
+
+                <p>Your cart is empty.</p>
+
+            </div>
+
+            <div class="cart-summary">
+
+                <div class="summary-row">
+                    <span>Savings</span>
+                    <strong id="cartSavings">Rs. 0</strong>
+                </div>
+
+                <div class="summary-row">
+                    <strong>Subtotal</strong>
+                    <strong id="cartSubtotal">Rs. 0</strong>
+                </div>
+
+                <!-- IMPORTANT:
+                     This goes to your EXISTING checkout.html
+                -->
+
+                <button
+                    class="checkout-btn"
+                    type="button"
+                    onclick="checkout()">
+                    Proceed to Checkout
+                </button>
+
+                <a
+                    href="cart.html"
+                    class="view-cart-btn">
+                    View Cart
+                </a>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+    <!-- =========================
+         QUICK VIEW MODAL
+    ========================== -->
+
+    <div id="quickViewModal" class="modal">
+
+        <div class="modal-content">
+
+            <button
+                class="modal-close"
+                onclick="closeQuickView()">
+                ×
+            </button>
+
+            <div
+                id="quickViewContent">
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- =========================
+         LOCATION MODAL
+    ========================== -->
+
+    <div id="locationModal" class="modal">
+
+        <div class="modal-content">
+
+            <button
+                class="modal-close"
+                onclick="closeLocationModal()">
+                ×
+            </button>
+
+            <h2>Choose Delivery Location</h2>
+
+            <p>
+                Enter your city or delivery location.
+            </p>
+
+            <div class="location-form">
+
+                <input
+                    id="locationInput"
+                    type="text"
+                    placeholder="Enter city">
+
+                <button
+                    type="button"
+                    onclick="saveLocation()">
+                    Save Location
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- =========================
+         MOBILE NAV
+    ========================== -->
+
+    <div class="mobile-nav">
+
+        <button
+            type="button"
+            onclick="window.location.href='index.html'">
+            <span>🏠</span>
+            Home
+        </button>
+
+        <button
+            type="button"
+            onclick="window.location.href='deals.html'">
+            <span>🔥</span>
+            Deals
+        </button>
+
+        <button
+            type="button"
+            onclick="openCart()">
+            <span>🛒</span>
+            Cart
+        </button>
+
+        <button
+            type="button"
+            onclick="window.location.href='account.html'">
+            <span>👤</span>
+            Account
+        </button>
+
+    </div>
+
+    <!-- =========================
+         SCRIPT
+    ========================== -->
+
+    <script src="script.js"></script>
+
+    <script>
+
+        /* =========================================
+           BASIC HOMEPAGE FUNCTIONS
+           These work with the existing script.js
+        ========================================= */
+
+        function toggleMegaMenu() {
+
+            const menu = document.getElementById("megaMenu");
+
+            if (!menu) return;
+
+            if (menu.classList.contains("show")) {
+                menu.classList.remove("show");
+                menu.style.display = "none";
+            } else {
+                menu.classList.add("show");
+                menu.style.display = "block";
+            }
+        }
+
+        function toggleAccountMenu() {
+
+            const menu = document.getElementById("accountMenu");
+
+            if (!menu) return;
+
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+            }
+        }
+
+        function toggleLanguage() {
+
+            if (typeof showNotification === "function") {
+                showNotification("Language selection is available soon.");
+            } else {
+                alert("Language selection is available soon.");
+            }
+        }
+
+        function showSearchSuggestions() {
+
+            const input = document.getElementById("searchInput");
+            const box = document.getElementById("searchSuggestions");
+
+            if (!input || !box) return;
+
+            const value = input.value.trim().toLowerCase();
+
+            if (!value) {
+                box.style.display = "none";
+                box.innerHTML = "";
+                return;
+            }
+
+            const suggestions = [
+                "Smartphone",
+                "Laptop",
+                "Headphones",
+                "Smart Watch",
+                "Running Shoes",
+                "Men's Clothing",
+                "Women's Clothing",
+                "Kitchen Products",
+                "Beauty Products",
+                "Sports Products"
+            ];
+
+            const matches = suggestions
+                .filter(item =>
+                    item.toLowerCase().includes(value)
+                )
+                .slice(0, 6);
+
+            if (!matches.length) {
+                box.style.display = "none";
+                return;
+            }
+
+            box.innerHTML = matches
+                .map(item =>
+                    `<div onclick="selectSuggestion('${item.replace(/'/g, "\\'")}')">
+                        ${item}
+                    </div>`
+                )
+                .join("");
+
+            box.style.display = "block";
+        }
+
+        function selectSuggestion(value) {
+
+            const input = document.getElementById("searchInput");
+
+            if (input) {
+                input.value = value;
+            }
+
+            document.getElementById("searchSuggestions").style.display = "none";
+
+            performSearch();
+        }
+
+        function handleSearchKey(event) {
+
+            if (event.key === "Enter") {
+                performSearch();
+            }
+        }
+
+        function performSearch() {
+
+            const input = document.getElementById("searchInput");
+
+            if (!input) return;
+
+            const query = input.value.trim().toLowerCase();
+
+            document.getElementById("searchSuggestions").style.display = "none";
+
+            if (!query) {
+                document
+                    .getElementById("products")
+                    ?.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+                return;
+            }
+
+            const products = document.querySelectorAll(".product-card");
+
+            let found = false;
+
+            products.forEach(product => {
+
+                const text =
+                    product.innerText.toLowerCase();
+
+                if (text.includes(query)) {
+                    product.style.display = "";
+                    found = true;
+                } else {
+                    product.style.display = "none";
+                }
+
+            });
+
+            document
+                .getElementById("products")
+                ?.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            if (!found) {
+
+                if (typeof showNotification === "function") {
+                    showNotification(
+                        "No products found for: " + input.value
+                    );
+                } else {
+                    alert(
+                        "No products found for: " + input.value
+                    );
+                }
+            }
+        }
+
+        function filterCategory(category) {
+
+            const products =
+                document.querySelectorAll(".product-card");
+
+            products.forEach(product => {
+
+                const productCategory =
+                    product.dataset.category;
+
+                if (
+                    category === "all" ||
+                    productCategory === category
+                ) {
+                    product.style.display = "";
+                } else {
+                    product.style.display = "none";
+                }
+
+            });
+
+            document.querySelectorAll(".filter-btn")
+                .forEach(btn => btn.classList.remove("active"));
+
+            document
+                .getElementById("products")
+                ?.scrollIntoView({
+                    behavior: "smooth"
+                });
+        }
+
+        function sortProducts() {
+
+            const grid =
+                document.getElementById("mainProductGrid");
+
+            const select =
+                document.getElementById("sortProducts");
+
+            if (!grid || !select) return;
+
+            const cards =
+                Array.from(
+                    grid.querySelectorAll(".product-card")
+                );
+
+            if (select.value === "low") {
+
+                cards.sort(
+                    (a, b) =>
+                        Number(a.dataset.price) -
+                        Number(b.dataset.price)
+                );
+
+            } else if (select.value === "high") {
+
+                cards.sort(
+                    (a, b) =>
+                        Number(b.dataset.price) -
+                        Number(a.dataset.price)
+                );
+            }
+
+            cards.forEach(card =>
+                grid.appendChild(card)
+            );
+        }
+
+        function addProductToCart(name, price, image) {
+
+            let cart =
+                JSON.parse(
+                    localStorage.getItem("cart")
+                ) || [];
+
+            const existing =
+                cart.find(item =>
+                    item.name === name
+                );
+
+            if (existing) {
+                existing.quantity =
+                    Number(existing.quantity || 1) + 1;
+            } else {
+                cart.push({
+                    name: name,
+                    price: Number(price),
+                    image: image || "🛍️",
+                    quantity: 1
+                });
+            }
+
+            localStorage.setItem(
+                "cart",
+                JSON.stringify(cart)
+            );
+
+            updateCartCount();
+
+            if (typeof showNotification === "function") {
+                showNotification(
+                    name + " added to cart."
+                );
+            }
+        }
+
+        function updateCartCount() {
+
+            const cart =
+                JSON.parse(
+                    localStorage.getItem("cart")
+                ) || [];
+
+            const count =
+                cart.reduce(
+                    (total, item) =>
+                        total +
+                        Number(item.quantity || 1),
+                    0
+                );
+
+            const element =
+                document.getElementById("cartCount");
+
+            if (element) {
+                element.textContent = count;
+            }
+        }
+
+        function renderHomeCart() {
+
+            const cart =
+                JSON.parse(
+                    localStorage.getItem("cart")
+                ) || [];
+
+            const container =
+                document.getElementById("cartItems");
+
+            const subtotalElement =
+                document.getElementById("cartSubtotal");
+
+            const savingsElement =
+                document.getElementById("cartSavings");
+
+            if (!container) return;
+
+            if (!cart.length) {
+
+                container.innerHTML =
+                    "<p>Your cart is empty.</p>";
+
+                if (subtotalElement) {
+                    subtotalElement.textContent = "Rs. 0";
+                }
+
+                if (savingsElement) {
+                    savingsElement.textContent = "Rs. 0";
+                }
+
+                return;
+            }
+
+            let subtotal = 0;
+
+            container.innerHTML = cart.map((item, index) => {
+
+                const quantity =
+                    Number(item.quantity || 1);
+
+                const price =
+                    Number(item.price || 0);
+
+                const total =
+                    price * quantity;
+
+                subtotal += total;
+
+                return `
+                    <div class="cart-item">
+
+                        <div class="cart-item-image">
+                            ${item.image || "🛍️"}
+                        </div>
+
+                        <div class="cart-item-info">
+
+                            <h4>${item.name}</h4>
+
+                            <div>
+                                Rs. ${price.toLocaleString()}
+                            </div>
+
+                            <div>
+                                Quantity: ${quantity}
+                            </div>
+
+                            <button
+                                class="cart-remove"
+                                type="button"
+                                onclick="removeHomeCartItem(${index})">
+                                Remove
+                            </button>
+
+                        </div>
+
+                        <strong>
+                            Rs. ${total.toLocaleString()}
+                        </strong>
+
+                    </div>
+                `;
+
+            }).join("");
+
+            if (subtotalElement) {
+                subtotalElement.textContent =
+                    "Rs. " + subtotal.toLocaleString();
+            }
+
+            if (savingsElement) {
+                savingsElement.textContent =
+                    "Rs. 0";
+            }
+        }
+
+        function removeHomeCartItem(index) {
+
+            let cart =
+                JSON.parse(
+                    localStorage.getItem("cart")
+                ) || [];
+
+            cart.splice(index, 1);
+
+            localStorage.setItem(
+                "cart",
+                JSON.stringify(cart)
+            );
+
+            updateCartCount();
+            renderHomeCart();
+        }
+
+        function openCart() {
+
+            const overlay =
+                document.getElementById("cartOverlay");
+
+            if (!overlay) return;
+
+            renderHomeCart();
+
+            overlay.classList.add("show");
+        }
+
+        function closeCart(event) {
+
+            if (
+                event &&
+                event.target &&
+                event.target.id !== "cartOverlay"
+            ) {
+                return;
+            }
+
+            const overlay =
+                document.getElementById("cartOverlay");
+
+            if (overlay) {
+                overlay.classList.remove("show");
+            }
+        }
+
+        /*
+            IMPORTANT:
+            This sends the customer to the
+            checkout.html that you already created.
+        */
+
+        function checkout() {
+
+            const cart =
+                JSON.parse(
+                    localStorage.getItem("cart")
+                ) || [];
+
+            if (!cart.length) {
+
+                alert("Your cart is empty.");
+
+                return;
+            }
+
+            window.location.href = "checkout.html";
+        }
+
+        function quickView(
+            name,
+            price,
+            image,
+            description
+        ) {
+
+            const modal =
+                document.getElementById("quickViewModal");
+
+            const content =
+                document.getElementById("quickViewContent");
+
+            if (!modal || !content) return;
+
+            content.innerHTML = `
+
+                <div style="text-align:center;">
+
+                    <div style="font-size:100px;">
+                        ${image}
+                    </div>
+
+                    <h2>${name}</h2>
+
+                    <p style="color:#666;">
+                        ${description}
+                    </p>
+
+                    <h2>
+                        Rs. ${Number(price).toLocaleString()}
+                    </h2>
+
+                    <button
+                        class="add-cart-btn"
+                        onclick="addProductToCart(
+                            '${name.replace(/'/g, "\\'")}',
+                            ${price},
+                            '${image}'
+                        ); closeQuickView();">
+
+                        Add to Cart
+
+                    </button>
+
+                </div>
+            `;
+
+            modal.classList.add("show");
+        }
+
+        function closeQuickView() {
+
+            const modal =
+                document.getElementById("quickViewModal");
+
+            if (modal) {
+                modal.classList.remove("show");
+            }
+        }
+
+        function openLocationModal() {
+
+            const modal =
+                document.getElementById("locationModal");
+
+            if (modal) {
+                modal.classList.add("show");
+            }
+        }
+
+        function closeLocationModal() {
+
+            const modal =
+                document.getElementById("locationModal");
+
+            if (modal) {
+                modal.classList.remove("show");
+            }
+        }
+
+        function saveLocation() {
+
+            const input =
+                document.getElementById("locationInput");
+
+            if (!input) return;
+
+            const location =
+                input.value.trim();
+
+            if (!location) {
+
+                alert("Please enter your city.");
+
+                return;
+            }
+
+            localStorage.setItem(
+                "novaMartLocation",
+                location
+            );
+
+            closeLocationModal();
+
+            alert(
+                "Delivery location saved: " +
+                location
+            );
+        }
+
+        /* Close menus when clicking elsewhere */
+
+        document.addEventListener(
+            "click",
+            function(event) {
+
+                const account =
+                    document.querySelector(".account-area");
+
+                const accountMenu =
+                    document.getElementById("accountMenu");
+
+                if (
+                    account &&
+                    accountMenu &&
+                    !account.contains(event.target)
+                ) {
+                    accountMenu.style.display = "none";
+                }
+
+                const megaMenu =
+                    document.getElementById("megaMenu");
+
+                const menuButton =
+                    document.querySelector(".menu-btn");
+
+                if (
+                    megaMenu &&
+                    menuButton &&
+                    !megaMenu.contains(event.target) &&
+                    !menuButton.contains(event.target)
+                ) {
+                    megaMenu.classList.remove("show");
+                    megaMenu.style.display = "none";
+                }
+
+            }
+        );
+
+        /* Update cart when homepage loads */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function() {
+
+                updateCartCount();
+
+                const savedLocation =
+                    localStorage.getItem(
+                        "novaMartLocation"
+                    );
+
+                const locationButton =
+                    document.querySelector(".location-btn");
+
+                if (
+                    savedLocation &&
+                    locationButton
+                ) {
+
+                    locationButton.innerHTML = `
+                        <span class="location-small">
+                            Deliver to
+                        </span>
+
+                        <span class="location-main">
+                            📍 ${savedLocation}
+                        </span>
+                    `;
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>
